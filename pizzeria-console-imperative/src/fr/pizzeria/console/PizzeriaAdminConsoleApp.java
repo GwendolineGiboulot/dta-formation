@@ -50,6 +50,27 @@ public class PizzeriaAdminConsoleApp {
 		Tableau_Pizza[3][7] = "14.00";
 
 		System.out.println("***** Pizzeria Administration *****");
+		
+		
+
+		System.out.println("              _....._   ");
+		System.out.println("          _.:`.--|--.`:._   ");
+		System.out.println("        .: .'\\o  | o /'. '.   ");
+		System.out.println("       // '.  \\ o|  /  o '.\\   ");
+		System.out.println("      //'._o'. \\ |o/ o_.-'o\\\\   ");
+		System.out.println("      || o '-.'.\\|/.-' o   ||   ");
+		System.out.println("      ||--o--o-->|<o-----o-||   ");
+		System.out.println("      \\\\  o _.-'/|\\'-._o  o//   ");
+		System.out.println("       \\\\.-'  o/ |o\\ o '-.//   ");
+		System.out.println("        '.'.o / o|  \\ o.'.'   ");
+		System.out.println("          `-:/.__|__o\\:-'   ");
+		System.out.println("             `\"--=--\"`   ");
+
+		
+		
+		
+		
+		
 		System.out.println("1. Lister les pizzas");
 		System.out.println("2. Ajouter une nouvelle pizza");
 		System.out.println("3. Mettre à jour une pizza");

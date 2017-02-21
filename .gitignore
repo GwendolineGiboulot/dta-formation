@@ -2,3 +2,19 @@
 Servers/
 RemoteSystemsTempFiles/
 .recommenders
+
+
+
+
+	System.out.println("           _....._   ");
+	System.out.println("       _.:`.--|--.`:._   ");
+	System.out.println("     .: .'\o  | o /'. '.   ");
+	System.out.println("    // '.  \ o|  /  o '.\   ");
+	System.out.println("   //'._o'. \ |o/ o_.-'o\\   ");
+	System.out.println("   || o '-.'.\|/.-' o   ||   ");
+	System.out.println("   ||--o--o-->|<o-----o-||   ");
+	System.out.println("   \\  o _.-'/|\'-._o  o//   ");
+	System.out.println("    \\.-'  o/ |o\ o '-.//   ");
+	System.out.println("     '.'.o / o|  \ o.'.'   ");
+	System.out.println("       `-:/.__|__o\:-'   ");
+	System.out.println("          `"--=--"`   ");
