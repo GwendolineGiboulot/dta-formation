@@ -6,12 +6,13 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 
-		// Initialisation des PIZZAS
+		
 
 		int taille_tableau = 8;
 
 		String Tableau_Pizza[][] = new String[4][100];
-
+		
+		// Initialisation des PIZZAS
 		Tableau_Pizza[0][0] = "0";
 		Tableau_Pizza[0][1] = "1";
 		Tableau_Pizza[0][2] = "2";
@@ -184,6 +185,10 @@ public class PizzeriaAdminConsoleApp {
 				}
 
 				break;
+				
+			case 99:
+				break;
+				
 			default:
 				System.out.println("Commande inconnue");
 				break;
