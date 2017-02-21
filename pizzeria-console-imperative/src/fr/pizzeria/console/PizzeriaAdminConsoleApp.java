@@ -10,44 +10,44 @@ public class PizzeriaAdminConsoleApp {
 
 		int taille_tableau = 8;
 
-		String Tableau_Pizza[][] = new String[4][100];
+		String tableauPizza[][] = new String[4][100];
 		
 		// Initialisation des PIZZAS
-		Tableau_Pizza[0][0] = "0";
-		Tableau_Pizza[0][1] = "1";
-		Tableau_Pizza[0][2] = "2";
-		Tableau_Pizza[0][3] = "3";
-		Tableau_Pizza[0][4] = "4";
-		Tableau_Pizza[0][5] = "5";
-		Tableau_Pizza[0][6] = "6";
-		Tableau_Pizza[0][7] = "7";
+		tableauPizza[0][0] = "0";
+		tableauPizza[0][1] = "1";
+		tableauPizza[0][2] = "2";
+		tableauPizza[0][3] = "3";
+		tableauPizza[0][4] = "4";
+		tableauPizza[0][5] = "5";
+		tableauPizza[0][6] = "6";
+		tableauPizza[0][7] = "7";
 
-		Tableau_Pizza[1][0] = "PEP";
-		Tableau_Pizza[1][1] = "MAR";
-		Tableau_Pizza[1][2] = "REI";
-		Tableau_Pizza[1][3] = "FRO";
-		Tableau_Pizza[1][4] = "CAN";
-		Tableau_Pizza[1][5] = "SAV";
-		Tableau_Pizza[1][6] = "ORI";
-		Tableau_Pizza[1][7] = "IND";
+		tableauPizza[1][0] = "PEP";
+		tableauPizza[1][1] = "MAR";
+		tableauPizza[1][2] = "REI";
+		tableauPizza[1][3] = "FRO";
+		tableauPizza[1][4] = "CAN";
+		tableauPizza[1][5] = "SAV";
+		tableauPizza[1][6] = "ORI";
+		tableauPizza[1][7] = "IND";
 
-		Tableau_Pizza[2][0] = "Pépéroni";
-		Tableau_Pizza[2][1] = "Margherita";
-		Tableau_Pizza[2][2] = "La Reine";
-		Tableau_Pizza[2][3] = "La 4 fromages";
-		Tableau_Pizza[2][4] = "La cannibale";
-		Tableau_Pizza[2][5] = "La savoyarde";
-		Tableau_Pizza[2][6] = "L’orientale";
-		Tableau_Pizza[2][7] = "L’indienne";
+		tableauPizza[2][0] = "Pépéroni";
+		tableauPizza[2][1] = "Margherita";
+		tableauPizza[2][2] = "La Reine";
+		tableauPizza[2][3] = "La 4 fromages";
+		tableauPizza[2][4] = "La cannibale";
+		tableauPizza[2][5] = "La savoyarde";
+		tableauPizza[2][6] = "L’orientale";
+		tableauPizza[2][7] = "L’indienne";
 
-		Tableau_Pizza[3][0] = "12.50";
-		Tableau_Pizza[3][1] = "14.00";
-		Tableau_Pizza[3][2] = "11.50";
-		Tableau_Pizza[3][3] = "12.00";
-		Tableau_Pizza[3][4] = "12.50";
-		Tableau_Pizza[3][5] = "13.00";
-		Tableau_Pizza[3][6] = "13.50";
-		Tableau_Pizza[3][7] = "14.00";
+		tableauPizza[3][0] = "12.50";
+		tableauPizza[3][1] = "14.00";
+		tableauPizza[3][2] = "11.50";
+		tableauPizza[3][3] = "12.00";
+		tableauPizza[3][4] = "12.50";
+		tableauPizza[3][5] = "13.00";
+		tableauPizza[3][6] = "13.50";
+		tableauPizza[3][7] = "14.00";
 
 		System.out.println("***** Pizzeria Administration *****");
 		
@@ -89,7 +89,7 @@ public class PizzeriaAdminConsoleApp {
 			case 1:
 				for (int i = 0; i < taille_tableau; ++i) {
 					System.out.println(
-							Tableau_Pizza[1][i] + " -> " + Tableau_Pizza[2][i] + " (" + Tableau_Pizza[3][i] + " €)");
+							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
 				break;
 			case 2:
@@ -98,15 +98,15 @@ public class PizzeriaAdminConsoleApp {
 
 					System.out.println("Veuillez saisir le code");
 					entree = reader.next();
-					Tableau_Pizza[1][taille_tableau] = entree;
+					tableauPizza[1][taille_tableau] = entree;
 					System.out.println("Veuillez saisir le nom (sans espace)");
 					entree = reader.next();
-					Tableau_Pizza[2][taille_tableau] = entree;
+					tableauPizza[2][taille_tableau] = entree;
 					System.out.println("Veuillez saisir le prix");
 					entree = reader.next();
-					Tableau_Pizza[3][taille_tableau] = entree;
+					tableauPizza[3][taille_tableau] = entree;
 
-					Tableau_Pizza[0][taille_tableau] = String.valueOf(taille_tableau);
+					tableauPizza[0][taille_tableau] = String.valueOf(taille_tableau);
 
 					taille_tableau++;
 				} else {
@@ -117,7 +117,7 @@ public class PizzeriaAdminConsoleApp {
 			case 3:
 				for (int i = 0; i < taille_tableau; ++i) {
 					System.out.println(
-							Tableau_Pizza[1][i] + " -> " + Tableau_Pizza[2][i] + " (" + Tableau_Pizza[3][i] + " €)");
+							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
 				System.out.println("Veuillez choisir la pizza à modifier.");
 				System.out.println("(99 pour abandonner).");
@@ -131,7 +131,7 @@ public class PizzeriaAdminConsoleApp {
 					for (int i = 0; i < taille_tableau; ++i) {
 
 						
-						if (Tableau_Pizza[1][i].equals(entree)) {
+						if (tableauPizza[1][i].equals(entree)) {
 						
 							trouve = 1;
 							num_pizza = i;
@@ -143,13 +143,13 @@ public class PizzeriaAdminConsoleApp {
 
 						System.out.println("Veuillez saisir le code");
 						entree = reader.next();
-						Tableau_Pizza[1][num_pizza] = entree;
+						tableauPizza[1][num_pizza] = entree;
 						System.out.println("Veuillez saisir le nom (sans espace)");
 						entree = reader.next();
-						Tableau_Pizza[2][num_pizza] = entree;
+						tableauPizza[2][num_pizza] = entree;
 						System.out.println("Veuillez saisir le prix");
 						entree = reader.next();
-						Tableau_Pizza[3][num_pizza] = entree;
+						tableauPizza[3][num_pizza] = entree;
 					}
 					else
 					{
@@ -163,7 +163,7 @@ public class PizzeriaAdminConsoleApp {
 			case 4:
 				for (int i = 0; i < taille_tableau; ++i) {
 					System.out.println(
-							Tableau_Pizza[1][i] + " -> " + Tableau_Pizza[2][i] + " (" + Tableau_Pizza[3][i] + " €)");
+							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
 				System.out.println("Veuillez choisir la pizza à modifier.");
 				System.out.println("(99 pour abandonner).");
@@ -177,7 +177,7 @@ public class PizzeriaAdminConsoleApp {
 					for (int i = 0; i < taille_tableau; ++i) {
 
 						
-						if (Tableau_Pizza[1][i].equals(entree)) {
+						if (tableauPizza[1][i].equals(entree)) {
 						
 							trouve = 1;
 							num_pizza = i;
@@ -189,10 +189,10 @@ public class PizzeriaAdminConsoleApp {
 
 						for (int i = num_pizza; i < taille_tableau - 1; ++i) {
 
-							Tableau_Pizza[0][i] = Tableau_Pizza[0][i + 1];
-							Tableau_Pizza[1][i] = Tableau_Pizza[1][i + 1];
-							Tableau_Pizza[2][i] = Tableau_Pizza[2][i + 1];
-							Tableau_Pizza[3][i] = Tableau_Pizza[3][i + 1];
+							tableauPizza[0][i] = tableauPizza[0][i + 1];
+							tableauPizza[1][i] = tableauPizza[1][i + 1];
+							tableauPizza[2][i] = tableauPizza[2][i + 1];
+							tableauPizza[3][i] = tableauPizza[3][i + 1];
 
 						}
 						taille_tableau--;
