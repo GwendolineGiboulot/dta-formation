@@ -6,12 +6,10 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) {
 
-		
-
-		int taille_tableau = 8;
+		int tailleTableau = 8;
 
 		String tableauPizza[][] = new String[4][100];
-		
+
 		// Initialisation des PIZZAS
 		tableauPizza[0][0] = "0";
 		tableauPizza[0][1] = "1";
@@ -50,8 +48,6 @@ public class PizzeriaAdminConsoleApp {
 		tableauPizza[3][7] = "14.00";
 
 		System.out.println("***** Pizzeria Administration *****");
-		
-		
 
 		System.out.println("              _....._   ");
 		System.out.println("          _.:`.--|--.`:._   ");
@@ -66,11 +62,6 @@ public class PizzeriaAdminConsoleApp {
 		System.out.println("          `-:/.__|__o\\:-'   ");
 		System.out.println("             `\"--=--\"`   ");
 
-		
-		
-		
-		
-		
 		System.out.println("1. Lister les pizzas");
 		System.out.println("2. Ajouter une nouvelle pizza");
 		System.out.println("3. Mettre à jour une pizza");
@@ -87,35 +78,35 @@ public class PizzeriaAdminConsoleApp {
 
 			switch (choix) {
 			case 1:
-				for (int i = 0; i < taille_tableau; ++i) {
+				for (int i = 0; i < tailleTableau; ++i) {
 					System.out.println(
 							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
 				break;
 			case 2:
 
-				if (taille_tableau < 98) {
+				if (tailleTableau < 98) {
 
 					System.out.println("Veuillez saisir le code");
 					entree = reader.next();
-					tableauPizza[1][taille_tableau] = entree;
+					tableauPizza[1][tailleTableau] = entree;
 					System.out.println("Veuillez saisir le nom (sans espace)");
 					entree = reader.next();
-					tableauPizza[2][taille_tableau] = entree;
+					tableauPizza[2][tailleTableau] = entree;
 					System.out.println("Veuillez saisir le prix");
 					entree = reader.next();
-					tableauPizza[3][taille_tableau] = entree;
+					tableauPizza[3][tailleTableau] = entree;
 
-					tableauPizza[0][taille_tableau] = String.valueOf(taille_tableau);
+					tableauPizza[0][tailleTableau] = String.valueOf(tailleTableau);
 
-					taille_tableau++;
+					tailleTableau++;
 				} else {
 					System.out.println("Impossible de creer plus de pizza");
 				}
 
 				break;
 			case 3:
-				for (int i = 0; i < taille_tableau; ++i) {
+				for (int i = 0; i < tailleTableau; ++i) {
 					System.out.println(
 							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
@@ -128,11 +119,10 @@ public class PizzeriaAdminConsoleApp {
 
 					int trouve = 0;
 					int num_pizza = -1;
-					for (int i = 0; i < taille_tableau; ++i) {
+					for (int i = 0; i < tailleTableau; ++i) {
 
-						
 						if (tableauPizza[1][i].equals(entree)) {
-						
+
 							trouve = 1;
 							num_pizza = i;
 							break;
@@ -150,18 +140,16 @@ public class PizzeriaAdminConsoleApp {
 						System.out.println("Veuillez saisir le prix");
 						entree = reader.next();
 						tableauPizza[3][num_pizza] = entree;
-					}
-					else
-					{
+					} else {
 						System.out.println("cette pizza n'existe pas");
-						
+
 					}
 
 				}
 
 				break;
 			case 4:
-				for (int i = 0; i < taille_tableau; ++i) {
+				for (int i = 0; i < tailleTableau; ++i) {
 					System.out.println(
 							tableauPizza[1][i] + " -> " + tableauPizza[2][i] + " (" + tableauPizza[3][i] + " €)");
 				}
@@ -174,11 +162,10 @@ public class PizzeriaAdminConsoleApp {
 
 					int trouve = 0;
 					int num_pizza = -1;
-					for (int i = 0; i < taille_tableau; ++i) {
+					for (int i = 0; i < tailleTableau; ++i) {
 
-						
 						if (tableauPizza[1][i].equals(entree)) {
-						
+
 							trouve = 1;
 							num_pizza = i;
 							break;
@@ -187,7 +174,7 @@ public class PizzeriaAdminConsoleApp {
 
 					if (trouve == 1) {
 
-						for (int i = num_pizza; i < taille_tableau - 1; ++i) {
+						for (int i = num_pizza; i < tailleTableau - 1; ++i) {
 
 							tableauPizza[0][i] = tableauPizza[0][i + 1];
 							tableauPizza[1][i] = tableauPizza[1][i + 1];
@@ -195,21 +182,19 @@ public class PizzeriaAdminConsoleApp {
 							tableauPizza[3][i] = tableauPizza[3][i + 1];
 
 						}
-						taille_tableau--;
-					}
-					else
-					{
+						tailleTableau--;
+					} else {
 						System.out.println("cette pizza n'existe pas");
-						
+
 					}
 
 				}
 
 				break;
-				
+
 			case 99:
 				break;
-				
+
 			default:
 				System.out.println("Commande inconnue");
 				break;
@@ -222,8 +207,3 @@ public class PizzeriaAdminConsoleApp {
 	}
 
 }
-
-
-
-
-
