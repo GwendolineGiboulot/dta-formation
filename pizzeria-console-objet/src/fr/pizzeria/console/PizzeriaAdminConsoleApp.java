@@ -56,6 +56,8 @@ public class PizzeriaAdminConsoleApp {
 					System.out.println(
 							tableauPizza[i].code + " -> " + tableauPizza[i].nom + " (" + tableauPizza[i].prix + " €)");
 				}
+				System.out.println("-> " + Pizza.nbPizzas + " pizzas créées depuis l'initialisation du programme");
+
 				break;
 			case 2:
 
