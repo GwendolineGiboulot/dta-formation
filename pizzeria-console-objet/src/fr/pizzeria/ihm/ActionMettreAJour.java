@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoImplTableau;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class ActionMettreAJour extends Action {
@@ -26,7 +27,11 @@ public class ActionMettreAJour extends Action {
 
 		Pizza pizza = new Pizza(36, code, nom, prix);
 
-		pizz.updatePizza(codeARemplacer, pizza);
+		try {
+			pizz.updatePizza(codeARemplacer, pizza);
+		} catch (UpdatePizzaException e) {
+			System.out.println(e.getMessage());
+		}
 
 	}
 

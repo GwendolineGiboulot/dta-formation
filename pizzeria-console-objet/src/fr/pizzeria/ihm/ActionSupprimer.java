@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDaoImplTableau;
+import fr.pizzeria.exception.DeletePizzaException;
 
 public class ActionSupprimer extends Action {
 
@@ -16,7 +17,11 @@ public class ActionSupprimer extends Action {
 		System.out.println("Veuillez saisir le code de la pizza à supprimer");
 		String codePizza = reader.next();
 
-		pizz.deletePizza(codePizza);
+		try {
+			pizz.deletePizza(codePizza);
+		} catch (DeletePizzaException e) {
+			System.out.println(e.getMessage());
+		}
 
 	}
 

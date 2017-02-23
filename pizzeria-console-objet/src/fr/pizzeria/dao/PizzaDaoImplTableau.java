@@ -1,5 +1,8 @@
 package fr.pizzeria.dao;
 
+import fr.pizzeria.exception.DeletePizzaException;
+import fr.pizzeria.exception.SavePizzaException;
+import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplTableau implements IPizzaDao {
@@ -9,6 +12,7 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 	private static int tailleTableau = 0;
 
 	static {
+
 		tableauPizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
 		tableauPizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
 		tableauPizza[2] = new Pizza(2, "REI", "La Reine", 11.50);
@@ -34,22 +38,32 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 	}
 
 	@Override
-	public boolean saveNewPizza(Pizza pizza) {
+	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+
+		if (pizza.code.length() != 3) {
+			throw new SavePizzaException("Un code doit faire 3 caractère");
+		}
+
+		if (pizza.code.toUpperCase() != pizza.code) { // ie si le code n'est pas
+			throw new SavePizzaException("Un code pizza doit être en majuscule"); // tout
+																					// en
+																					// majuscule
+
+		}
+
 		if (tailleTableau < 100) {
 
 			pizza.id = tailleTableau;
 			tableauPizza[tailleTableau] = pizza;
 			tailleTableau++;
-			return true;
 		} else {
-
-			return false;
+			throw new SavePizzaException("Trop de pizza, impossible d'en ajouter");
 		}
 
 	}
 
 	@Override
-	public boolean updatePizza(String codePizza, Pizza pizza) {
+	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 
 		boolean trouve = false;
 		int num_pizza = -1;
@@ -67,12 +81,13 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 
 			tableauPizza[num_pizza] = pizza;
 
+		} else {
+			throw new UpdatePizzaException("Code pizza introuvable");
 		}
-		return trouve;
 	}
 
 	@Override
-	public boolean deletePizza(String codePizza) {
+	public void deletePizza(String codePizza) throws DeletePizzaException {
 		boolean trouve = false;
 		int num_pizza = -1;
 		for (int i = 0; i < Pizza.nbPizzas; ++i) {
@@ -87,7 +102,7 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 
 		if (trouve == true) {
 
-			for (int i = num_pizza; i < Pizza.nbPizzas - 1; ++i) {
+			for (int i = num_pizza; i < tailleTableau - 1; ++i) {
 
 				tableauPizza[i].id = tableauPizza[i + 1].id;
 				tableauPizza[i].code = tableauPizza[i + 1].code;
@@ -96,8 +111,9 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 
 			}
 			tailleTableau--;
+		} else {
+			throw new DeletePizzaException("Code pizza introuvable");
 		}
-		return trouve;
 	}
 
 }
