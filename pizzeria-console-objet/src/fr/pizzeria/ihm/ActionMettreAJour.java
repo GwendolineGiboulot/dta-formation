@@ -1,35 +1,29 @@
 package fr.pizzeria.ihm;
 
-import java.util.Scanner;
-
-import fr.pizzeria.dao.PizzaDaoImplTableau;
-import fr.pizzeria.exception.UpdatePizzaException;
+import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.tools.IhmTools;
 
 public class ActionMettreAJour extends Action {
 
 	@Override
-	void faireAction() {
-
-		PizzaDaoImplTableau pizz = new PizzaDaoImplTableau();
-
-		Scanner reader = new Scanner(System.in); // Reading from System.in
+	void faireAction(IhmTools ihmTools) {
 
 		System.out.println("Veuillez saisir le code de la pizza à mettre à jour");
-		String codeARemplacer = reader.next();
+		String codeARemplacer = ihmTools.getReader().next();
 
 		System.out.println("Veuillez saisir le nouveau code");
-		String code = reader.next();
+		String code = ihmTools.getReader().next();
 		System.out.println("Veuillez saisir le nom (sans espace)");
-		String nom = reader.next();
+		String nom = ihmTools.getReader().next();
 		System.out.println("Veuillez saisir le prix");
-		double prix = reader.nextDouble();
+		double prix = ihmTools.getReader().nextDouble();
 
 		Pizza pizza = new Pizza(36, code, nom, prix);
 
 		try {
-			pizz.updatePizza(codeARemplacer, pizza);
-		} catch (UpdatePizzaException e) {
+			ihmTools.getPizzaDao().updatePizza(codeARemplacer, pizza);
+		} catch (UpdateDaoException e) {
 			System.out.println(e.getMessage());
 		}
 

@@ -1,17 +1,21 @@
 package fr.pizzeria.dao;
 
-import fr.pizzeria.exception.DeletePizzaException;
-import fr.pizzeria.exception.SavePizzaException;
-import fr.pizzeria.exception.UpdatePizzaException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import fr.pizzeria.exception.DeleteDaoException;
+import fr.pizzeria.exception.SaveDaoException;
+import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImplTableau implements IPizzaDao {
+public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
-	private static Pizza tableauPizza[] = new Pizza[100];
+	private Pizza tableauPizza[] = new Pizza[100];
 
-	private static int tailleTableau = 0;
+	private int tailleTableau = 0;
 
-	static {
+	public PizzaDaoImplTableau() {
 
 		tableauPizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
 		tableauPizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
@@ -23,10 +27,11 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 		tableauPizza[7] = new Pizza(7, "IND", "L’indienne", 14.00);
 
 		tailleTableau = 8;
+
 	}
 
 	@Override
-	public Pizza[] findAllPizzas() {
+	public List<Pizza> findAllPizzas() {
 		Pizza tableauARenvoyer[] = new Pizza[tailleTableau];
 
 		for (int i = 0; i < tailleTableau; ++i) {
@@ -34,20 +39,25 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 
 		}
 
-		return tableauARenvoyer;
+		List<Pizza> ListeARenvoyer = new ArrayList<>(Arrays.asList(tableauARenvoyer));
+
+		return ListeARenvoyer;
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SavePizzaException {
+	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
 
 		if (pizza.code.length() != 3) {
-			throw new SavePizzaException("Un code doit faire 3 caractère");
+			throw new SaveDaoException("Un code doit faire 3 caractère");
 		}
 
-		if (pizza.code.toUpperCase() != pizza.code) { // ie si le code n'est pas
-			throw new SavePizzaException("Un code pizza doit être en majuscule"); // tout
-																					// en
-																					// majuscule
+		String pizzaMaj = pizza.code.toUpperCase();
+
+		if (!pizzaMaj.equals(pizza.code)) { // ie si le code
+											// n'est pas
+			throw new SaveDaoException("Un code pizza doit être en majuscule"); // tout
+																				// en
+																				// majuscule
 
 		}
 
@@ -57,13 +67,13 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 			tableauPizza[tailleTableau] = pizza;
 			tailleTableau++;
 		} else {
-			throw new SavePizzaException("Trop de pizza, impossible d'en ajouter");
+			throw new SaveDaoException("Trop de pizza, impossible d'en ajouter");
 		}
 
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
+	public void updatePizza(String codePizza, Pizza pizza) throws UpdateDaoException {
 
 		boolean trouve = false;
 		int num_pizza = -1;
@@ -82,12 +92,12 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 			tableauPizza[num_pizza] = pizza;
 
 		} else {
-			throw new UpdatePizzaException("Code pizza introuvable");
+			throw new UpdateDaoException("Code pizza introuvable");
 		}
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws DeletePizzaException {
+	public void deletePizza(String codePizza) throws DeleteDaoException {
 		boolean trouve = false;
 		int num_pizza = -1;
 		for (int i = 0; i < Pizza.nbPizzas; ++i) {
@@ -112,7 +122,7 @@ public class PizzaDaoImplTableau implements IPizzaDao {
 			}
 			tailleTableau--;
 		} else {
-			throw new DeletePizzaException("Code pizza introuvable");
+			throw new DeleteDaoException("Code pizza introuvable");
 		}
 	}
 

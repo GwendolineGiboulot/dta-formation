@@ -1,8 +1,8 @@
 package fr.pizzeria.exception;
 
-public class DeletePizzaException extends Exception {
+public class DeleteDaoException extends Exception {
 
-	public DeletePizzaException(String string) {
+	public DeleteDaoException(String string) {
 		super(string);
 	}
 

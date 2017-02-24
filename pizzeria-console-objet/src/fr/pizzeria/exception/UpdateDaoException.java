@@ -1,8 +1,8 @@
 package fr.pizzeria.exception;
 
-public class UpdatePizzaException extends Exception {
+public class UpdateDaoException extends Exception {
 
-	public UpdatePizzaException(String string) {
+	public UpdateDaoException(String string) {
 		super(string);
 	}
 

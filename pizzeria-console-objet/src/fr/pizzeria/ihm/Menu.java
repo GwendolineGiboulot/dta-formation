@@ -1,18 +1,26 @@
 package fr.pizzeria.ihm;
 
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
+import fr.pizzeria.tools.IhmTools;
 
 public class Menu {
 
 	public static void menuPrincipal() {
 
-		Action menuAction[] = { new ActionLister(), new ActionAjouter(), new ActionMettreAJour(),
-				new ActionSupprimer() };
+		Map<Integer, Action> menuAction = new HashMap<>();
+		menuAction.put(1, new ActionLister());
+		menuAction.put(2, new ActionAjouter());
+		menuAction.put(3, new ActionMettreAJour());
+		menuAction.put(4, new ActionSupprimer());
+
 		String libelle[] = { new ActionLister().getLibelle(), new ActionAjouter().getLibelle(),
 				new ActionMettreAJour().getLibelle(), new ActionSupprimer().getLibelle() };
 
 		int choix = 0;
-		Scanner reader = new Scanner(System.in);
+
+		IhmTools ihmTools = new IhmTools();
 
 		while (choix != 98) {
 
@@ -22,19 +30,19 @@ public class Menu {
 
 			System.out.println("99 : Sortir");
 
-			choix = reader.nextInt() - 1;
+			choix = ihmTools.getReader().nextInt();
 
-			if (choix == 98) {
+			if (choix == 99) {
 				break;
 			} else {
-				if (choix > -1 && choix < menuAction.length)
-					menuAction[choix].faireAction();
+				if (choix > 0 && choix < menuAction.size() + 1)
+					menuAction.get(choix).faireAction(ihmTools);
 
 			}
 
 		}
 
-		reader.close();
+		ihmTools.getReader().close();
 	}
 
 }

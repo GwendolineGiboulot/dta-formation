@@ -1,8 +1,8 @@
 package fr.pizzeria.exception;
 
-public class SavePizzaException extends Exception {
+public class SaveDaoException extends Exception {
 
-	public SavePizzaException(String string) {
+	public SaveDaoException(String string) {
 		super(string);
 	}
 
