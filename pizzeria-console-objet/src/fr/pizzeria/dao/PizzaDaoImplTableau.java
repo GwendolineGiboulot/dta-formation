@@ -7,6 +7,7 @@ import java.util.List;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.exception.UpdateDaoException;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplTableau implements IDao<Pizza, String> {
@@ -17,14 +18,14 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 	public PizzaDaoImplTableau() {
 
-		tableauPizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50);
-		tableauPizza[1] = new Pizza(1, "MAR", "Margherita", 14.00);
-		tableauPizza[2] = new Pizza(2, "REI", "La Reine", 11.50);
-		tableauPizza[3] = new Pizza(3, "FRO", "La 4 fromages", 12.00);
-		tableauPizza[4] = new Pizza(4, "CAN", "La cannibale", 12.50);
-		tableauPizza[5] = new Pizza(5, "SAV", "La savoyarde", 13.00);
-		tableauPizza[6] = new Pizza(6, "ORI", "L’orientale", 13.50);
-		tableauPizza[7] = new Pizza(7, "IND", "L’indienne", 14.00);
+		tableauPizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.POISSON);
+		tableauPizza[1] = new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.VIANDE);
+		tableauPizza[2] = new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.VIANDE);
+		tableauPizza[3] = new Pizza(3, "FRO", "La 4 fromages", 12.00, CategoriePizza.SANS_VIANDE);
+		tableauPizza[4] = new Pizza(4, "CAN", "La cannibale", 12.50, CategoriePizza.VIANDE);
+		tableauPizza[5] = new Pizza(5, "SAV", "La savoyarde", 13.00, CategoriePizza.VIANDE);
+		tableauPizza[6] = new Pizza(6, "ORI", "L’orientale", 13.50, CategoriePizza.VIANDE);
+		tableauPizza[7] = new Pizza(7, "IND", "L’indienne", 14.00, CategoriePizza.SANS_VIANDE);
 
 		tailleTableau = 8;
 

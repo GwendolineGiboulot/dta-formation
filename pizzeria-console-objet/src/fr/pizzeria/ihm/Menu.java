@@ -31,6 +31,7 @@ public class Menu {
 			System.out.println("99 : Sortir");
 
 			choix = ihmTools.getReader().nextInt();
+			ihmTools.getReader().nextLine();
 
 			if (choix == 99) {
 				break;

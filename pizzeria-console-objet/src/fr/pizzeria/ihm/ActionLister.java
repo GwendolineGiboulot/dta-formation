@@ -13,8 +13,7 @@ public class ActionLister extends Action {
 		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAllPizzas();
 
 		for (int i = 0; i < tableauPizza.size(); ++i) {
-			System.out.println(tableauPizza.get(i).code + " -> " + tableauPizza.get(i).nom + " ("
-					+ tableauPizza.get(i).prix + " €)");
+			System.out.println(tableauPizza.get(i).toString());
 		}
 		System.out.println("-> " + tableauPizza.size() + " pizzas créées depuis l'initialisation du programme");
 
