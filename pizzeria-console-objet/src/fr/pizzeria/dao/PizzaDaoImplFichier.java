@@ -2,11 +2,14 @@ package fr.pizzeria.dao;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.UpdateDaoException;
@@ -20,20 +23,22 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 		List<Pizza> listPizza = new ArrayList<Pizza>();
 
-		try {
+		try (Stream<Path> files = Files.list(Paths.get("data\\"))) {
 
-			List<String> lines = Files.readAllLines(
-					Paths.get("C:\\Users\\Quelqun\\Documents\\workspace-sts-3.8.3.RELEASE\\apps\\data\\pizza.txt"));
+			return files.map(chemin -> {
 
-			for (String s : lines) {
-				String[] items = s.split(";");
+				try (Stream<String> lines = Files.lines(chemin)) {
 
-				Pizza p = new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
-						CategoriePizza.getEnum(items[4]));
+					String[] items = lines.findFirst().get().split(";");
+					Pizza p = new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
+							CategoriePizza.getEnum(items[4]));
 
-				listPizza.add(p);
+					return p;
+				} catch (IOException e) {
+					throw new RuntimeException();
+				}
 
-			}
+			}).collect(Collectors.toList());
 
 		} catch (IOException e) {
 			System.out.println("ERREUR LORS DE LA LECTURE");
@@ -49,8 +54,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 		List<String> lines = Arrays.asList(pizza.toCSV());
 
 		try {
-			Files.write(Paths.get("C:\\Users\\Quelqun\\Documents\\workspace-sts-3.8.3.RELEASE\\apps\\data\\pizza.txt"),
-					lines, StandardOpenOption.APPEND);
+			Files.write(Paths.get("data\\" + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
 		} catch (IOException e) {
 			System.out.println("ERREUR LORS DE L'ECRITURE");
 		}
@@ -59,39 +63,22 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 	@Override
 	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
-		List<Pizza> listPizza = findAllPizzas();
 
-		boolean trouve = false;
-		int num_pizza = -1;
-		for (int i = 0; i < Pizza.nbPizzas; ++i) {
+		if (Files.exists(Paths.get("data\\" + code + ".txt"))) {
 
-			if (listPizza.get(i).code.equals(code)) {
+			List<String> lines = Arrays.asList(pizza.toCSV());
 
-				trouve = true;
-				num_pizza = i;
-				break;
+			try {
+
+				Files.delete(Paths.get("data\\" + code + ".txt"));
+
+				Files.write(Paths.get("data\\" + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
+			} catch (IOException e) {
+				System.out.println("ERREUR LORS DE L'ECRITURE");
 			}
-		}
-
-		if (trouve == true) {
-
-			listPizza.set(num_pizza, pizza);
 
 		} else {
 			throw new UpdateDaoException("Code pizza introuvable");
-		}
-
-		List<String> lines = new ArrayList<String>(); // Arrays.asList(pizza.toCSV());
-
-		for (Pizza p : listPizza) {
-			lines.add(p.toCSV());
-		}
-
-		try {
-			Files.write(Paths.get("C:\\Users\\Quelqun\\Documents\\workspace-sts-3.8.3.RELEASE\\apps\\data\\pizza.txt"),
-					lines);
-		} catch (IOException e) {
-			System.out.println("ERREUR LORS DE L'ECRITURE");
 		}
 
 	}
@@ -99,39 +86,16 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	@Override
 	public void deletePizza(String code) throws DeleteDaoException {
 
-		List<Pizza> listPizza = findAllPizzas();
+		if (Files.exists(Paths.get("data\\" + code + ".txt"))) {
 
-		boolean trouve = false;
-		int num_pizza = -1;
-		for (int i = 0; i < Pizza.nbPizzas; ++i) {
-
-			if (listPizza.get(i).code.equals(code)) {
-
-				trouve = true;
-				num_pizza = i;
-				break;
+			try {
+				Files.delete(Paths.get("data\\" + code + ".txt"));
+			} catch (IOException e) {
+				System.out.println("ERREUR LORS DE L'ECRITURE");
 			}
-		}
-
-		if (trouve == true) {
-
-			listPizza.remove(num_pizza);
 
 		} else {
 			throw new DeleteDaoException("Code pizza introuvable");
-		}
-
-		List<String> lines = new ArrayList<String>(); // Arrays.asList(pizza.toCSV());
-
-		for (Pizza p : listPizza) {
-			lines.add(p.toCSV());
-		}
-
-		try {
-			Files.write(Paths.get("C:\\Users\\Quelqun\\Documents\\workspace-sts-3.8.3.RELEASE\\apps\\data\\pizza.txt"),
-					lines);
-		} catch (IOException e) {
-			System.out.println("ERREUR LORS DE L'ECRITURE");
 		}
 
 	}
