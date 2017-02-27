@@ -14,9 +14,8 @@ public class Menu {
 		menuAction.put(2, new ActionAjouter());
 		menuAction.put(3, new ActionMettreAJour());
 		menuAction.put(4, new ActionSupprimer());
-
-		String libelle[] = { new ActionLister().getLibelle(), new ActionAjouter().getLibelle(),
-				new ActionMettreAJour().getLibelle(), new ActionSupprimer().getLibelle() };
+		menuAction.put(5, new ActionListerCategorie());
+		menuAction.put(6, new ActionAfficherPrixMax());
 
 		int choix = 0;
 
@@ -24,9 +23,7 @@ public class Menu {
 
 		while (choix != 98) {
 
-			for (int i = 0; i < libelle.length; ++i) {
-				System.out.println(i + 1 + " : " + libelle[i]);
-			}
+			menuAction.forEach((k, v) -> System.out.println(k + " : " + v.getLibelle()));
 
 			System.out.println("99 : Sortir");
 
