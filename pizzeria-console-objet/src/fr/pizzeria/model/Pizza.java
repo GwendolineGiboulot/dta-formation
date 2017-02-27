@@ -72,4 +72,13 @@ public class Pizza {
 		return temp;
 	}
 
+	public String toCSV() {
+
+		String temp = "";
+
+		temp += id + ";" + code + ";" + nom + ";" + prix + ";" + categorie.getLibelle();
+
+		return temp;
+	}
+
 }

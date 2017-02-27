@@ -15,4 +15,5 @@ public interface IDao<E, Id> {
 	void updatePizza(Id code, E pizza) throws UpdateDaoException;
 
 	void deletePizza(Id code) throws DeleteDaoException;
+
 }
