@@ -2,7 +2,11 @@ package dta.chat.view.console;
 
 import java.util.Scanner;
 
-public class ChatConsoleView extends ViewComposite {
+import dta.chat.model.ChatMessage;
+import dta.chat.model.observer.ChatObservable;
+import dta.chat.model.observer.ChatObserver;
+
+public class ChatConsoleView extends ViewComposite implements ChatObserver<ChatMessage> {
 
 	private Scanner read;
 
@@ -24,6 +28,13 @@ public class ChatConsoleView extends ViewComposite {
 	@Override
 	protected void printThisAfter() {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void update(ChatObservable<ChatMessage> observable, ChatMessage message) {
+
+		System.out.println(message.getLogin() + " : " + message.getText());
 
 	}
 

@@ -6,8 +6,6 @@ public class ChatConsoleConversationView extends ViewComposite {
 	protected void printThisBefore() {
 		System.out.println(">>>>>              Conversations              <<<<<");
 
-		System.out.println("Salut " + user);
-
 	}
 
 	@Override
