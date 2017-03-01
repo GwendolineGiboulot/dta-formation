@@ -7,16 +7,16 @@ public class ChatConsoleLoginView extends ViewComposite {
 	private Scanner read;
 	private String login;
 
+	public ChatConsoleLoginView(Scanner read) {
+		this.read = read;
+	}
+
 	public String getLogin() {
 		return login;
 	}
 
 	public void setLogin(String login) {
 		this.login = login;
-	}
-
-	public ChatConsoleLoginView(Scanner read) {
-		this.read = read;
 	}
 
 	@Override
