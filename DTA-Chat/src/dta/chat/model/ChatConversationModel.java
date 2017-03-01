@@ -11,7 +11,7 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 
 		ChatMessage message = new ChatMessage();
 
-		message.setLogin("Welcome ");
+		message.setLogin("Je vous prie d'agréer l'expression de mes plus sincères salutations distinguées");
 		message.setText(login);
 
 		notifyObservers(message);
