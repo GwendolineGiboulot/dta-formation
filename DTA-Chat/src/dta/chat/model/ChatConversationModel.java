@@ -1,16 +1,17 @@
 package dta.chat.model;
 
-import chat.model.socket.ChatSocketImpl;
 import dta.chat.model.observer.ChatObservable;
+import inutile.couleur;
+import proxy.Proxy;
 
 public class ChatConversationModel extends ChatObservable<ChatMessage> {
 
 	String login;
-	ChatSocketImpl connection;
+	Proxy proxy;
 
-	public ChatConversationModel(ChatSocketImpl connection) {
+	public ChatConversationModel(Proxy connection) {
 
-		this.connection = connection;
+		this.proxy = connection;
 	}
 
 	public void setLogin(String login) {
@@ -28,9 +29,9 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 
 		ChatMessage message = new ChatMessage();
 		message.setLogin(login);
-		message.setText(msg);
+		message.setText(couleur.coloriser(msg));
 
-		connection.sendMessage(message);
+		proxy.sendMessage(message);
 
 		notifyObservers(message);
 	}
@@ -40,7 +41,7 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 		new Thread(() -> {
 
 			while (true) {
-				ChatMessage message = connection.readMessage();
+				ChatMessage message = proxy.readMessage();
 				notifyObservers(message);
 			}
 

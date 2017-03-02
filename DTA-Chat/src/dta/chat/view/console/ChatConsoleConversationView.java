@@ -1,10 +1,12 @@
 package dta.chat.view.console;
 
+import inutile.couleur;
+
 public class ChatConsoleConversationView extends ViewComposite {
 
 	@Override
 	protected void printThisBefore() {
-		System.out.println(">>>>>              Conversations              <<<<<");
+		System.out.println(couleur.coloriser(">>>>>              Conversations              <<<<<"));
 
 	}
 

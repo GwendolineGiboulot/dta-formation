@@ -1,10 +1,12 @@
 package dta.chat.view.console;
 
+import inutile.couleur;
+
 public class ChatConsoleTitleView extends ViewComposite {
 
 	@Override
 	protected void printThisBefore() {
-		System.out.println("@@@@@              MON SUPER CHAT              @@@@@");
+		System.out.println(couleur.coloriser("@@@@@              MON SUPER CHAT              @@@@@"));
 	}
 
 	@Override

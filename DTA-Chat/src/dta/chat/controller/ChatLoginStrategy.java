@@ -2,6 +2,7 @@ package dta.chat.controller;
 
 import dta.chat.model.ChatConversationModel;
 import dta.chat.view.console.ViewComposite;
+import inutile.couleur;
 
 public class ChatLoginStrategy implements ChatAuthController {
 
@@ -15,7 +16,9 @@ public class ChatLoginStrategy implements ChatAuthController {
 
 	@Override
 	public void authenticate(String login) {
-		model.setLogin(login);
+		// model.setLogin("\033[31m" + login + "\033[0m");
+		model.setLogin(couleur.coloriser(login));
+
 	}
 
 }

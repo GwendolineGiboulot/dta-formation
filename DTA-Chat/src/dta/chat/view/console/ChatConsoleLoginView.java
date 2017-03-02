@@ -2,6 +2,8 @@ package dta.chat.view.console;
 
 import java.util.Scanner;
 
+import inutile.couleur;
+
 public class ChatConsoleLoginView extends ViewComposite {
 
 	private Scanner read;
@@ -21,7 +23,7 @@ public class ChatConsoleLoginView extends ViewComposite {
 
 	@Override
 	protected void printThisBefore() {
-		System.out.println("~~~~~              Authentification              ~~~~~~");
+		System.out.println(couleur.coloriser("~~~~~              Authentification              ~~~~~~"));
 		System.out.print("Veuillez saisir votre login : ");
 		login = read.nextLine();
 		this.authStrategy.authenticate(login);

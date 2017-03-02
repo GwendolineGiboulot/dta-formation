@@ -33,4 +33,8 @@ public class ChatMessage implements Serializable {
 		this.text = text;
 	}
 
+	public String toString() {
+		return login + ":" + text;
+	}
+
 }
