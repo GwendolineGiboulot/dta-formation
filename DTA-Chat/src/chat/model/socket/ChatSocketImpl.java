@@ -8,12 +8,12 @@ public class ChatSocketImpl implements ChatSocket {
 
 	ClientSocket client;
 
-	public ChatSocketImpl() throws ChatClientException {
+	public ChatSocketImpl(String ip, int port) throws ChatClientException {
 
 		try {
-			client = new ClientSocket("192.168.99.31", 1800);
+			client = new ClientSocket(ip, port);
 		} catch (IOException e) {
-			throw new ChatClientException("Probleme lors de la création de la connection");
+			throw new ChatClientException("Probleme lors de la création de la connection", e);
 		}
 	}
 
@@ -27,7 +27,7 @@ public class ChatSocketImpl implements ChatSocket {
 		try {
 			client.sendObject(msg);
 		} catch (IOException e) {
-			throw new ChatClientException("Probleme lors de l'envoi du message");
+			throw new ChatClientException("Probleme lors de l'envoi du message", e);
 		}
 	}
 
@@ -36,7 +36,7 @@ public class ChatSocketImpl implements ChatSocket {
 		try {
 			return (ChatMessage) client.readObject();
 		} catch (ClassNotFoundException | IOException e) {
-			throw new ChatClientException("Probleme lors de la lecture du message");
+			throw new ChatClientException("Probleme lors de la lecture du message", e);
 		}
 	}
 

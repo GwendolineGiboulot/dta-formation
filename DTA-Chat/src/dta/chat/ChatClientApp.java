@@ -13,7 +13,7 @@ public class ChatClientApp {
 
 		try (Scanner read = new Scanner(System.in)) {
 
-			ChatSocketImpl connection = new ChatSocketImpl();
+			ChatSocketImpl connection = new ChatSocketImpl("192.168.99.31", 1800);
 			ChatConversationModel model = new ChatConversationModel(connection);
 			final ChatConsoleView view = new ChatConsoleView(read);
 
