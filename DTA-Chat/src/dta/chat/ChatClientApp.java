@@ -2,6 +2,7 @@ package dta.chat;
 
 import java.util.Scanner;
 
+import chat.model.socket.ChatSocketImpl;
 import dta.chat.controller.ChatLoginStrategy;
 import dta.chat.model.ChatConversationModel;
 import dta.chat.view.console.ChatConsoleView;
@@ -12,7 +13,8 @@ public class ChatClientApp {
 
 		try (Scanner read = new Scanner(System.in)) {
 
-			ChatConversationModel model = new ChatConversationModel();
+			ChatSocketImpl connection = new ChatSocketImpl();
+			ChatConversationModel model = new ChatConversationModel(connection);
 			final ChatConsoleView view = new ChatConsoleView(read);
 
 			view.setAuthController(new ChatLoginStrategy(view, model));
@@ -21,8 +23,15 @@ public class ChatClientApp {
 
 			view.print();
 
-			model.sendMessage("je dit un truc");
-			model.sendMessage("je dit un autre truc");
+			model.readMessage();
+
+			while (true) {
+				String s = read.nextLine();
+				model.sendMessage(s);
+			}
+
+			// model.sendMessage("je dit un autre truc");
+
 		}
 
 	}
