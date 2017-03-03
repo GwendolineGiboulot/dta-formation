@@ -2,6 +2,9 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Pizza {
 
 	public int id;
@@ -79,6 +82,26 @@ public class Pizza {
 		temp += id + ";" + code + ";" + nom + ";" + prix + ";" + categorie.getLibelle();
 
 		return temp;
+	}
+
+	public boolean equals(Pizza p) {
+		if (p == null) {
+			return false;
+		}
+		if (p == this) {
+			return true;
+		}
+		if (p.getClass() != getClass()) {
+			return false;
+		}
+		Pizza rhs = (Pizza) p;
+		return new EqualsBuilder().append(code, rhs.code).append(nom, rhs.nom).isEquals();
+	}
+
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(17, 37).append(code).append(nom).toHashCode();
 	}
 
 }

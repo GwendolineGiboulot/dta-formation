@@ -2,11 +2,12 @@ package proxy;
 
 import java.util.List;
 
+import chat.model.socket.ChatSocket;
 import chat.model.socket.ChatSocketImpl;
 import dta.chat.history.History;
 import dta.chat.model.ChatMessage;
 
-public class Proxy {
+public class Proxy implements ChatSocket {
 
 	ChatSocketImpl connection;
 
@@ -44,6 +45,12 @@ public class Proxy {
 			System.out.println(chatMessage.toString());
 
 		}
+
+	}
+
+	@Override
+	public void close() throws Exception {
+		// TODO Auto-generated method stub
 
 	}
 
