@@ -2,6 +2,11 @@
 Servers/
 RemoteSystemsTempFiles/
 .recommenders
-test
+/test/
 ghostintheshell/
 java-design-patterns-master/
+.settings
+.project
+.classpath
+target
+test-menu/
