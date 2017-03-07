@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,34 +17,30 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
+	final static String CHEMIN_SAUVEGARDE = "data\\";
+
 	@Override
 	public List<Pizza> findAllPizzas() {
 
-		List<Pizza> listPizza = new ArrayList<Pizza>();
-
-		try (Stream<Path> files = Files.list(Paths.get("data\\"))) {
+		try (Stream<Path> files = Files.list(Paths.get(CHEMIN_SAUVEGARDE))) {
 
 			return files.map(chemin -> {
 
 				try (Stream<String> lines = Files.lines(chemin)) {
 
 					String[] items = lines.findFirst().get().split(";");
-					Pizza p = new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
+					return new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
 							CategoriePizza.getEnum(items[4]));
-
-					return p;
 				} catch (IOException e) {
-					throw new RuntimeException();
+					throw new RuntimeException(e);
 				}
 
 			}).collect(Collectors.toList());
 
 		} catch (IOException e) {
-			System.out.println("ERREUR LORS DE LA LECTURE");
+			throw new RuntimeException(e);
 		}
 
-		// TODO Auto-generated method stub
-		return listPizza;
 	}
 
 	@Override
@@ -54,7 +49,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 		List<String> lines = Arrays.asList(pizza.toCSV());
 
 		try {
-			Files.write(Paths.get("data\\" + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
+			Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
 		} catch (IOException e) {
 			System.out.println("ERREUR LORS DE L'ECRITURE");
 		}
@@ -64,15 +59,15 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	@Override
 	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
 
-		if (Files.exists(Paths.get("data\\" + code + ".txt"))) {
+		if (Files.exists(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"))) {
 
 			List<String> lines = Arrays.asList(pizza.toCSV());
 
 			try {
 
-				Files.delete(Paths.get("data\\" + code + ".txt"));
+				Files.delete(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"));
 
-				Files.write(Paths.get("data\\" + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
+				Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
 			} catch (IOException e) {
 				System.out.println("ERREUR LORS DE L'ECRITURE");
 			}
@@ -86,10 +81,10 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	@Override
 	public void deletePizza(String code) throws DeleteDaoException {
 
-		if (Files.exists(Paths.get("data\\" + code + ".txt"))) {
+		if (Files.exists(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"))) {
 
 			try {
-				Files.delete(Paths.get("data\\" + code + ".txt"));
+				Files.delete(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"));
 			} catch (IOException e) {
 				System.out.println("ERREUR LORS DE L'ECRITURE");
 			}

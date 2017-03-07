@@ -46,17 +46,18 @@ public class Pizza {
 
 	}
 
+	@Override
 	public String toString() {
 
 		String temp = "";
 		try {
 			for (Field champ : this.getClass().getDeclaredFields()) {
 
-				ToString annotationTrouve = champ.getAnnotation((ToString.class));
+				ToString annotationTrouve = champ.getAnnotation(ToString.class);
 
 				if (annotationTrouve != null) {
 
-					if (champ.getAnnotation((ToString.class)).uppercase() == false) {
+					if (champ.getAnnotation(ToString.class).uppercase() == false) {
 
 						temp += champ.get(this).toString() + " ";
 					} else {
@@ -68,8 +69,7 @@ public class Pizza {
 		}
 
 		catch (IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 
 		}
 		return temp;
@@ -98,6 +98,7 @@ public class Pizza {
 		return new EqualsBuilder().append(code, rhs.code).append(nom, rhs.nom).isEquals();
 	}
 
+	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class

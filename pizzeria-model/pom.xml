@@ -3,18 +3,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-    <groupId>dta</groupId>
-    <artifactId>pizzeria-console-parent</artifactId>
+    <groupId>pizzeria</groupId>
+    <artifactId>valentin-pizzeria-console-parent</artifactId>
     <version>1.0.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>dta</groupId>
-  <artifactId>pizzeria-model</artifactId>
+  <groupId>pizzeria</groupId>
+  <artifactId>valentin-pizzeria-model</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>pizzeria-model</name>
+  <name>valentin-pizzeria-model</name>
   <url>http://maven.apache.org</url>
 
 

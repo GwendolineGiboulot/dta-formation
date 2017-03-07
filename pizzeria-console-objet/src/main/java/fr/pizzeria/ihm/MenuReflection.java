@@ -14,7 +14,7 @@ public class MenuReflection extends Menu {
 		int i = 1;
 		for (Class<? extends Action> classe : subTypes) {
 
-			OptionMenu annotationTrouve = classe.getAnnotation((OptionMenu.class));
+			OptionMenu annotationTrouve = classe.getAnnotation(OptionMenu.class);
 
 			if (annotationTrouve != null) {
 

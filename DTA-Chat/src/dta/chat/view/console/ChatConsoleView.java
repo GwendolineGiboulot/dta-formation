@@ -21,13 +21,11 @@ public class ChatConsoleView extends ViewComposite implements ChatObserver<ChatM
 
 	@Override
 	protected void printThisBefore() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected void printThisAfter() {
-		// TODO Auto-generated method stub
 
 	}
 

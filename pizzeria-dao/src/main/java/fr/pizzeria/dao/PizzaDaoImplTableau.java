@@ -40,9 +40,8 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 		}
 
-		List<Pizza> ListeARenvoyer = new ArrayList<>(Arrays.asList(tableauARenvoyer));
+		return new ArrayList<>(Arrays.asList(tableauARenvoyer));
 
-		return ListeARenvoyer;
 	}
 
 	@Override
@@ -77,20 +76,20 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdateDaoException {
 
 		boolean trouve = false;
-		int num_pizza = -1;
+		int numPizza = -1;
 		for (int i = 0; i < Pizza.nbPizzas; ++i) {
 
 			if (tableauPizza[i].code.equals(codePizza)) {
 
 				trouve = true;
-				num_pizza = i;
+				numPizza = i;
 				break;
 			}
 		}
 
-		if (trouve == true) {
+		if (trouve) {
 
-			tableauPizza[num_pizza] = pizza;
+			tableauPizza[numPizza] = pizza;
 
 		} else {
 			throw new UpdateDaoException("Code pizza introuvable");
@@ -100,20 +99,20 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	@Override
 	public void deletePizza(String codePizza) throws DeleteDaoException {
 		boolean trouve = false;
-		int num_pizza = -1;
+		int numPizza = -1;
 		for (int i = 0; i < Pizza.nbPizzas; ++i) {
 
 			if (tableauPizza[i].code.equals(codePizza)) {
 
 				trouve = true;
-				num_pizza = i;
+				numPizza = i;
 				break;
 			}
 		}
 
-		if (trouve == true) {
+		if (trouve) {
 
-			for (int i = num_pizza; i < tailleTableau - 1; ++i) {
+			for (int i = numPizza; i < tailleTableau - 1; ++i) {
 
 				tableauPizza[i].id = tableauPizza[i + 1].id;
 				tableauPizza[i].code = tableauPizza[i + 1].code;
