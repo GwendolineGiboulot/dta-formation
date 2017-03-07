@@ -14,8 +14,6 @@ public class App {
 		System.out.println(p1.equals(p2));
 
 		new MenuReflection().demarrer();
-		
-		LE CODE COMPILE PLUUUUUUUUUS
 
 	}
 }
