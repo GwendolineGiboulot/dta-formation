@@ -1,6 +1,0 @@
-fr\pizzeria\dao\PizzaDaoImplFichier.class
-fr\pizzeria\exception\DeleteDaoException.class
-fr\pizzeria\dao\PizzaDaoImplTableau.class
-fr\pizzeria\exception\UpdateDaoException.class
-fr\pizzeria\exception\SaveDaoException.class
-fr\pizzeria\dao\IDao.class

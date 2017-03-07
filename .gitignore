@@ -1,3 +1,4 @@
+
 .metadata/
 Servers/
 RemoteSystemsTempFiles/
@@ -9,3 +10,5 @@ java-design-patterns-master/
 test-menu/
 dependency-reduced-pom.xml
 .sonarlint
+target/
+bin/
