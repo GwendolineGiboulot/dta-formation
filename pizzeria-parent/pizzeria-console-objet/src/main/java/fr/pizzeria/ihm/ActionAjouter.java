@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -27,7 +28,7 @@ public class ActionAjouter extends Action {
 		try {
 			ihmTools.getPizzaDao().saveNewPizza(pizza);
 		} catch (SaveDaoException e) {
-			System.out.println(e.getMessage());
+			throw new IhmRuntimeException(e);
 		}
 
 	}

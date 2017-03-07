@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -29,7 +30,7 @@ public class ActionMettreAJour extends Action {
 		try {
 			ihmTools.getPizzaDao().updatePizza(codeARemplacer, pizza);
 		} catch (UpdateDaoException e) {
-			System.out.println(e.getMessage());
+			throw new IhmRuntimeException(e);
 		}
 
 	}
