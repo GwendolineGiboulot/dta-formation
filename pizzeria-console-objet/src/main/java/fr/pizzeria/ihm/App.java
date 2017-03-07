@@ -13,8 +13,6 @@ public class App {
 
 		System.out.println(p1.equals(p2));
 
-		ce code ne compilera pas
-		
 		new MenuReflection().demarrer();
 
 	}
