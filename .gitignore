@@ -1,9 +1,7 @@
 .metadata/
 Servers/
 RemoteSystemsTempFiles/
-.recommenders
-/test/
-ghostintheshell/
+.recommenders/
 java-design-patterns-master/
 .settings
 .project
@@ -11,4 +9,3 @@ java-design-patterns-master/
 test-menu/
 dependency-reduced-pom.xml
 .sonarlint
-
