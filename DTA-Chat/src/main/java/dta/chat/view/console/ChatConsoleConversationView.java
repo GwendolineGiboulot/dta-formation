@@ -12,7 +12,6 @@ public class ChatConsoleConversationView extends ViewComposite {
 
 	@Override
 	protected void printThisAfter() {
-		// TODO Auto-generated method stub
 
 	}
 

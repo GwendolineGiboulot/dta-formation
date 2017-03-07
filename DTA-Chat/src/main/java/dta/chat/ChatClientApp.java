@@ -13,9 +13,6 @@ public class ChatClientApp {
 
 		try (Scanner read = new Scanner(System.in)) {
 
-			// ChatSocketImpl connection = new ChatSocketImpl("192.168.99.31",
-			// 1800);
-
 			Proxy connection = new Proxy("192.168.99.31", 1800);
 
 			ChatConversationModel model = new ChatConversationModel(connection);
@@ -24,7 +21,7 @@ public class ChatClientApp {
 
 			connection.afficherHistorique();
 
-			view.setAuthController(new ChatLoginStrategy(view, model));
+			view.setAuthController(new ChatLoginStrategy(model));
 
 			model.addObserver(view);
 
@@ -36,8 +33,6 @@ public class ChatClientApp {
 				String s = read.nextLine();
 				model.sendMessage(s);
 			}
-
-			// model.sendMessage("je dit un autre truc");
 
 		}
 

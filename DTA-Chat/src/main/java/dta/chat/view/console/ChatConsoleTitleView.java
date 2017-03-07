@@ -11,7 +11,7 @@ public class ChatConsoleTitleView extends ViewComposite {
 
 	@Override
 	protected void printThisAfter() {
-
+		// print things here
 	}
 
 }

@@ -54,7 +54,7 @@ public class ChatServerApp {
 						}
 					} catch (IOException | ClassNotFoundException e) {
 						System.err.println("Erreur client " + e.getMessage());
-						// e.printStackTrace();
+
 					} finally {
 						sockets.remove(client);
 						System.err.println("Fin du client " + socketClient.getInetAddress());

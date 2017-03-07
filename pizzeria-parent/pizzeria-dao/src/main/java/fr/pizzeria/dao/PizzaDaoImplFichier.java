@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import fr.pizzeria.exception.DaoRuntimeException;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
@@ -32,13 +33,13 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 					return new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
 							CategoriePizza.getEnum(items[4]));
 				} catch (IOException e) {
-					throw new RuntimeException(e);
+					throw new DaoRuntimeException(e);
 				}
 
 			}).collect(Collectors.toList());
 
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new DaoRuntimeException(e);
 		}
 
 	}
@@ -51,7 +52,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 		try {
 			Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
 		} catch (IOException e) {
-			System.out.println("ERREUR LORS DE L'ECRITURE");
+			throw new DaoRuntimeException(e);
 		}
 
 	}
@@ -69,7 +70,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 				Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
 			} catch (IOException e) {
-				System.out.println("ERREUR LORS DE L'ECRITURE");
+				throw new DaoRuntimeException(e);
 			}
 
 		} else {
@@ -86,7 +87,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 			try {
 				Files.delete(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"));
 			} catch (IOException e) {
-				System.out.println("ERREUR LORS DE L'ECRITURE");
+				throw new DaoRuntimeException(e);
 			}
 
 		} else {

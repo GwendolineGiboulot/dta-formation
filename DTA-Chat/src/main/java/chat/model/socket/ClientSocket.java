@@ -24,7 +24,7 @@ public class ClientSocket extends Socket {
 		this.serverOuput.writeObject(obj);
 	}
 
-	// Pour démo
+	// Pour dÃ©mo
 	public static void main(String[] args) throws IOException {
 		ClientSocket client = new ClientSocket("127.0.0.1", 1800);
 		client.sendObject("Bonjour");
