@@ -5,6 +5,7 @@ import java.util.List;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+@OptionMenu
 public class ActionLister extends Action {
 
 	@Override
@@ -15,12 +16,12 @@ public class ActionLister extends Action {
 		for (Pizza pizza : tableauPizza) {
 			// System.out.println(tableauPizza.get(i).code + " -> " +
 			// tableauPizza.get(i).nom + " ("
-			// + tableauPizza.get(i).prix + " Ä) " +
+			// + tableauPizza.get(i).prix + " ÔøΩ) " +
 			// tableauPizza.get(i).categorie.getLibelle());
 
 			System.out.println(pizza.toString());
 		}
-		System.out.println("-> " + tableauPizza.size() + " pizzas crÈÈes depuis l'initialisation du programme");
+		System.out.println("-> " + tableauPizza.size() + " pizzas cr√©√©es depuis l'initialisation du programme");
 
 	}
 

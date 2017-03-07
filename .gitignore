@@ -10,3 +10,4 @@ java-design-patterns-master/
 .classpath
 target
 test-menu/
+dependency-reduced-pom.xml

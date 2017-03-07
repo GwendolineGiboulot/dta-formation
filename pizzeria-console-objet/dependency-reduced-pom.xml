@@ -40,6 +40,36 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <build>
+        <resources>
+          <resource>
+            <filtering>true</filtering>
+            <directory>src/main/resources</directory>
+          </resource>
+        </resources>
+      </build>
+      <properties>
+        <impldao>fr.pizzeria.dao.PizzaDaoImplTableau</impldao>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <build>
+        <resources>
+          <resource>
+            <filtering>true</filtering>
+            <directory>C:\Users\Quelqun\Documents\workspace-sts-3.8.3.RELEASE\apps\pizzeria-console-objet\src\main\resources</directory>
+          </resource>
+        </resources>
+      </build>
+      <properties>
+        <impldao>fr.pizzeria.dao.PizzaDaoImplFichier</impldao>
+      </properties>
+    </profile>
+  </profiles>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

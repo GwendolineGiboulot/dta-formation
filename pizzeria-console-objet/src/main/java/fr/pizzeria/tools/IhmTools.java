@@ -1,14 +1,25 @@
 package fr.pizzeria.tools;
 
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoImplFichier;
 import fr.pizzeria.model.Pizza;
 
 public class IhmTools {
 
-	private IDao<Pizza, String> pizzaDao = new PizzaDaoImplFichier();
+	public IhmTools() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+		ResourceBundle bundle = ResourceBundle.getBundle("conf/application");
+		String daoImpl = bundle.getString("dao.impl");
+
+		IDao<Pizza, String> dao = (IDao<Pizza, String>) Class.forName(daoImpl).newInstance();
+
+		pizzaDao = dao;
+
+	}
+
+	private IDao<Pizza, String> pizzaDao;
 	private Scanner reader = new Scanner(System.in);
 
 	public IDao<Pizza, String> getPizzaDao() {

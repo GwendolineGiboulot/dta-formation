@@ -46,10 +46,14 @@
      <artifactId>commons-lang3</artifactId>
      <version>${commons-lang3.version}</version>
    </dependency>
+   <dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+    <version>0.9.10</version>
+</dependency>
  </dependencies>
 </dependencyManagement>
-
-   <dependencies>
+  <dependencies>
    <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
@@ -62,6 +66,8 @@
    <version>1.3</version>
    <scope>test</scope>
  </dependency>
+
+
   </dependencies>
 
 </project>

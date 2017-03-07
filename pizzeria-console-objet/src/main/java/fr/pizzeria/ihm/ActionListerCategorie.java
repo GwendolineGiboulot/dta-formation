@@ -8,6 +8,7 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+@OptionMenu
 public class ActionListerCategorie extends Action {
 
 	@Override
@@ -24,7 +25,7 @@ public class ActionListerCategorie extends Action {
 
 	@Override
 	String getLibelle() {
-		return "Afficher une liste de pizza par catégorie";
+		return "Afficher une liste de pizza par catÃ©gorie";
 	}
 
 }

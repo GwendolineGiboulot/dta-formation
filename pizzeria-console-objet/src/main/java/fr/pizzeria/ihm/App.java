@@ -5,7 +5,7 @@ import fr.pizzeria.model.Pizza;
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
 		Pizza p1 = new Pizza(12, "RTE", "la meilleure pizza", 78.25, CategoriePizza.VIANDE);
 
@@ -13,7 +13,9 @@ public class App {
 
 		System.out.println(p1.equals(p2));
 
-		Menu.menuPrincipal();
+		ce code ne compilera pas
+		
+		new MenuReflection().demarrer();
 
 	}
 }

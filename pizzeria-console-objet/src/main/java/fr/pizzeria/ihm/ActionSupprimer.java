@@ -3,12 +3,13 @@ package fr.pizzeria.ihm;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.tools.IhmTools;
 
+@OptionMenu
 public class ActionSupprimer extends Action {
 
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		System.out.println("Veuillez saisir le code de la pizza à supprimer");
+		System.out.println("Veuillez saisir le code de la pizza ï¿½ supprimer");
 		String codePizza = ihmTools.getReader().next();
 
 		try {

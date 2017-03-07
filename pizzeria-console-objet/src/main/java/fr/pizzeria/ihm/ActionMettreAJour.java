@@ -5,12 +5,13 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+@OptionMenu
 public class ActionMettreAJour extends Action {
 
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		System.out.println("Veuillez saisir le code de la pizza à mettre à jour");
+		System.out.println("Veuillez saisir le code de la pizza Ã  mettre Ã  jour");
 		String codeARemplacer = ihmTools.getReader().nextLine();
 
 		System.out.println("Veuillez saisir le nouveau code");
@@ -20,7 +21,7 @@ public class ActionMettreAJour extends Action {
 		System.out.println("Veuillez saisir le prix");
 		double prix = ihmTools.getReader().nextDouble();
 		ihmTools.getReader().nextLine();
-		System.out.println("Veuillez saisir la catégorie");
+		System.out.println("Veuillez saisir la catÃ©gorie");
 		String categorie = ihmTools.getReader().nextLine();
 
 		Pizza pizza = new Pizza(36, code, nom, prix, CategoriePizza.getEnum(categorie));

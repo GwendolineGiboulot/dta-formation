@@ -16,6 +16,57 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
+
+
+
+
+<profiles>
+
+<profile>
+<id>dev</id>
+<activation>
+<activeByDefault>true</activeByDefault>
+</activation>
+<properties>
+	<impldao>fr.pizzeria.dao.PizzaDaoImplTableau</impldao>
+</properties>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+   </build>
+</profile>
+
+
+
+
+<profile>
+<id>prod</id>
+<properties>
+	<impldao>fr.pizzeria.dao.PizzaDaoImplFichier</impldao>
+</properties>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+   </build>
+</profile>
+
+</profiles>
+
+
+
+
+
+
+
+
 <build>
 <plugins>
 
@@ -69,6 +120,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
      <version>1.0.0</version>
    </dependency>
 
+<dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+</dependency>
 
 	</dependencies>
 </project>

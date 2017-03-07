@@ -18,14 +18,14 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 	public PizzaDaoImplTableau() {
 
-		tableauPizza[0] = new Pizza(0, "PEP", "Pépéroni", 12.50, CategoriePizza.POISSON);
+		tableauPizza[0] = new Pizza(0, "PEP", "PÃ©pÃ©ronni", 12.50, CategoriePizza.POISSON);
 		tableauPizza[1] = new Pizza(1, "MAR", "Margherita", 14.00, CategoriePizza.VIANDE);
 		tableauPizza[2] = new Pizza(2, "REI", "La Reine", 11.50, CategoriePizza.VIANDE);
 		tableauPizza[3] = new Pizza(3, "FRO", "La 4 fromages", 12.00, CategoriePizza.SANS_VIANDE);
 		tableauPizza[4] = new Pizza(4, "CAN", "La cannibale", 12.50, CategoriePizza.VIANDE);
 		tableauPizza[5] = new Pizza(5, "SAV", "La savoyarde", 13.00, CategoriePizza.VIANDE);
-		tableauPizza[6] = new Pizza(6, "ORI", "L’orientale", 13.50, CategoriePizza.VIANDE);
-		tableauPizza[7] = new Pizza(7, "IND", "L’indienne", 14.00, CategoriePizza.SANS_VIANDE);
+		tableauPizza[6] = new Pizza(6, "ORI", "L'orientale", 13.50, CategoriePizza.VIANDE);
+		tableauPizza[7] = new Pizza(7, "IND", "L'indienne", 14.00, CategoriePizza.SANS_VIANDE);
 
 		tailleTableau = 8;
 
@@ -49,14 +49,14 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
 
 		if (pizza.code.length() != 3) {
-			throw new SaveDaoException("Un code doit faire 3 caractère");
+			throw new SaveDaoException("Un code doit faire 3 caractÃ¨re");
 		}
 
 		String pizzaMaj = pizza.code.toUpperCase();
 
 		if (!pizzaMaj.equals(pizza.code)) { // ie si le code
 											// n'est pas
-			throw new SaveDaoException("Un code pizza doit être en majuscule"); // tout
+			throw new SaveDaoException("Un code pizza doit Ãªtre en majuscule"); // tout
 																				// en
 																				// majuscule
 

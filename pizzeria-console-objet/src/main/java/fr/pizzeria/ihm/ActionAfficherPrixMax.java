@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+@OptionMenu
 public class ActionAfficherPrixMax extends Action {
 
 	@Override
@@ -25,7 +26,7 @@ public class ActionAfficherPrixMax extends Action {
 
 	@Override
 	String getLibelle() {
-		return "Afficher les PIZZAs les plus chères";
+		return "Afficher les PIZZAs les plus chÃ¨res";
 	}
 
 }
