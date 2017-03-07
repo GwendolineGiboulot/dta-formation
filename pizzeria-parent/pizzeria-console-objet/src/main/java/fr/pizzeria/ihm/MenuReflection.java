@@ -4,6 +4,8 @@ import java.util.Set;
 
 import org.reflections.Reflections;
 
+import fr.pizzeria.exception.IhmRuntimeException;
+
 public class MenuReflection extends Menu {
 
 	public MenuReflection() {
@@ -21,7 +23,7 @@ public class MenuReflection extends Menu {
 				try {
 					menuAction.put(i++, classe.newInstance());
 				} catch (InstantiationException | IllegalAccessException e) {
-					throw new RuntimeException(e);
+					throw new IhmRuntimeException(e);
 				}
 			}
 

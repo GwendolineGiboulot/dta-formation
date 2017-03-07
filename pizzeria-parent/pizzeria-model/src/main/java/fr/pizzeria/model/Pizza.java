@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import fr.pizzeria.exception.ModelRuntimeException;
+
 public class Pizza {
 
 	public int id;
@@ -69,7 +71,7 @@ public class Pizza {
 		}
 
 		catch (IllegalArgumentException | IllegalAccessException e) {
-			throw new RuntimeException(e);
+			throw new ModelRuntimeException(e);
 
 		}
 		return temp;

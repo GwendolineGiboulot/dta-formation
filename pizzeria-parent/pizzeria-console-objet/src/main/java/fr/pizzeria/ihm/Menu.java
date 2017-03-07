@@ -3,6 +3,7 @@ package fr.pizzeria.ihm;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.tools.IhmTools;
 
 public abstract class Menu {
@@ -44,7 +45,7 @@ public abstract class Menu {
 
 			ihmTools.getReader().close();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			throw new RuntimeException(e);
+			throw new IhmRuntimeException(e);
 		}
 	}
 
