@@ -17,7 +17,7 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
-	final static String CHEMIN_SAUVEGARDE = "data\\";
+	static final String CHEMIN_SAUVEGARDE = "data\\";
 
 	@Override
 	public List<Pizza> findAllPizzas() {

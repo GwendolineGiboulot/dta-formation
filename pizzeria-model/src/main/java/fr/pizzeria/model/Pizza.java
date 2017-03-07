@@ -57,7 +57,7 @@ public class Pizza {
 
 				if (annotationTrouve != null) {
 
-					if (champ.getAnnotation(ToString.class).uppercase() == false) {
+					if (!champ.getAnnotation(ToString.class).uppercase()) {
 
 						temp += champ.get(this).toString() + " ";
 					} else {
@@ -84,7 +84,8 @@ public class Pizza {
 		return temp;
 	}
 
-	public boolean equals(Pizza p) {
+	@Override
+	public boolean equals(Object p) {
 		if (p == null) {
 			return false;
 		}

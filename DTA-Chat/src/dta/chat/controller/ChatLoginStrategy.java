@@ -16,7 +16,6 @@ public class ChatLoginStrategy implements ChatAuthController {
 
 	@Override
 	public void authenticate(String login) {
-		// model.setLogin("\033[31m" + login + "\033[0m");
 		model.setLogin(couleur.coloriser(login));
 
 	}

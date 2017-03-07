@@ -14,10 +14,6 @@ public class ActionLister extends Action {
 		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAllPizzas();
 
 		for (Pizza pizza : tableauPizza) {
-			// System.out.println(tableauPizza.get(i).code + " -> " +
-			// tableauPizza.get(i).nom + " ("
-			// + tableauPizza.get(i).prix + " �) " +
-			// tableauPizza.get(i).categorie.getLibelle());
 
 			System.out.println(pizza.toString());
 		}
