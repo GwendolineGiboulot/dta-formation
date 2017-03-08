@@ -77,7 +77,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 		boolean trouve = false;
 		int numPizza = -1;
-		for (int i = 0; i < Pizza.nbPizzas; ++i) {
+		for (int i = 0; i < tailleTableau; ++i) {
 
 			if (tableauPizza[i].code.equals(codePizza)) {
 
@@ -100,7 +100,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	public void deletePizza(String codePizza) throws DeleteDaoException {
 		boolean trouve = false;
 		int numPizza = -1;
-		for (int i = 0; i < Pizza.nbPizzas; ++i) {
+		for (int i = 0; i < tailleTableau; ++i) {
 
 			if (tableauPizza[i].code.equals(codePizza)) {
 

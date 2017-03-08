@@ -25,7 +25,6 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	public static int nbPizzas;
 	@ToString
 	public CategoriePizza categorie;
 
@@ -43,8 +42,6 @@ public class Pizza {
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = categorie;
-
-		nbPizzas++;
 
 	}
 
