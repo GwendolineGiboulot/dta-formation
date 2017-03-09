@@ -8,11 +8,6 @@ public class IhmRuntimeException extends RuntimeException {
 
 	private static final long serialVersionUID = -5333919020370360569L;
 
-	public IhmRuntimeException() {
-		super();
-
-	}
-
 	/**
 	 * @param arg0
 	 * @param arg1
