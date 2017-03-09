@@ -124,6 +124,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <groupId>org.reflections</groupId>
     <artifactId>reflections</artifactId>
 </dependency>
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+
 
 	</dependencies>
 </project>

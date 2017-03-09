@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.IDao;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -45,6 +46,30 @@ public class IhmTools {
 
 	public void setReader(Scanner reader) {
 		this.reader = reader;
+	}
+
+	/**
+	 * @param c
+	 * @return
+	 * 
+	 * 		permet de faire remplir un objet pizza par l'utilisateur
+	 */
+
+	public Pizza saisirPizza(Scanner c) {
+
+		System.out.println("Veuillez saisir le code");
+
+		String code = c.nextLine();
+		System.out.println("Veuillez saisir le nom (sans espace)");
+		String nom = c.nextLine();
+		System.out.println("Veuillez saisir le prix");
+		double prix = c.nextDouble();
+		c.nextLine();
+		System.out.println("Veuillez saisir la cat�gorie");
+		String categorie = c.nextLine();
+
+		return new Pizza(36, code, nom, prix, CategoriePizza.getEnum(categorie));
+
 	}
 
 }

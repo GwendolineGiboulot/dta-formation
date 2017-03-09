@@ -2,6 +2,7 @@ package fr.pizzeria.dao;
 
 import java.util.List;
 
+import fr.pizzeria.exception.DaoRuntimeException;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.exception.UpdateDaoException;
@@ -37,5 +38,12 @@ public interface IDao<E, I> {
 	 * @throws DeleteDaoException
 	 */
 	void deletePizza(I code) throws DeleteDaoException;
+
+	/**
+	 * 
+	 */
+	default void importer() {
+		throw new DaoRuntimeException("IL FAUT UTILISER LE DAO BDD POUR UTILISER L'IMPORT");
+	}
 
 }

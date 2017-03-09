@@ -15,7 +15,7 @@ public class ActionAjouter extends Action {
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		Pizza pizza = saisirPizza(ihmTools.getReader());
+		Pizza pizza = ihmTools.saisirPizza(ihmTools.getReader());
 
 		try {
 			ihmTools.getPizzaDao().saveNewPizza(pizza);
