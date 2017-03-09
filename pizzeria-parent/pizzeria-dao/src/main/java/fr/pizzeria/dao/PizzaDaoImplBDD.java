@@ -88,10 +88,10 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 			PreparedStatement updatePizzaSt = connection
 					.prepareStatement("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)");
-			updatePizzaSt.setString(1, pizza.code);
-			updatePizzaSt.setString(2, pizza.nom);
-			updatePizzaSt.setFloat(3, pizza.prix.floatValue());
-			updatePizzaSt.setString(4, pizza.categorie.toString());
+			updatePizzaSt.setString(1, pizza.getCode());
+			updatePizzaSt.setString(2, pizza.getNom());
+			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
+			updatePizzaSt.setString(4, pizza.getCategorie().toString());
 			updatePizzaSt.executeUpdate();
 
 			updatePizzaSt.close();
@@ -109,10 +109,10 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 			PreparedStatement updatePizzaSt = connection
 					.prepareStatement("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?");
-			updatePizzaSt.setString(1, pizza.code);
-			updatePizzaSt.setString(2, pizza.nom);
-			updatePizzaSt.setFloat(3, pizza.prix.floatValue());
-			updatePizzaSt.setString(4, pizza.categorie.toString());
+			updatePizzaSt.setString(1, pizza.getCode());
+			updatePizzaSt.setString(2, pizza.getNom());
+			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
+			updatePizzaSt.setString(4, pizza.getCategorie().toString());
 			updatePizzaSt.setString(5, code);
 			updatePizzaSt.executeUpdate();
 

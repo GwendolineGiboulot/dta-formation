@@ -58,14 +58,14 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
 
-		if (pizza.code.length() != 3) {
+		if (pizza.getCode().length() != 3) {
 			throw new SaveDaoException("Un code doit faire 3 caractère");
 		}
 
-		String pizzaMaj = pizza.code.toUpperCase();
+		String pizzaMaj = pizza.getCode().toUpperCase();
 
-		if (!pizzaMaj.equals(pizza.code)) { // ie si le code
-											// n'est pas
+		if (!pizzaMaj.equals(pizza.getCode())) { // ie si le code
+			// n'est pas
 			throw new SaveDaoException("Un code pizza doit être en majuscule"); // tout
 																				// en
 																				// majuscule
@@ -74,7 +74,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 		if (tailleTableau < 100) {
 
-			pizza.id = tailleTableau;
+			pizza.setId(tailleTableau);
 			tableauPizza[tailleTableau] = pizza;
 			tailleTableau++;
 		} else {
@@ -90,7 +90,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 		int numPizza = -1;
 		for (int i = 0; i < tailleTableau; ++i) {
 
-			if (tableauPizza[i].code.equals(codePizza)) {
+			if (tableauPizza[i].getCode().equals(codePizza)) {
 
 				trouve = true;
 				numPizza = i;
@@ -113,7 +113,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 		int numPizza = -1;
 		for (int i = 0; i < tailleTableau; ++i) {
 
-			if (tableauPizza[i].code.equals(codePizza)) {
+			if (tableauPizza[i].getCode().equals(codePizza)) {
 
 				trouve = true;
 				numPizza = i;
@@ -125,10 +125,10 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 			for (int i = numPizza; i < tailleTableau - 1; ++i) {
 
-				tableauPizza[i].id = tableauPizza[i + 1].id;
-				tableauPizza[i].code = tableauPizza[i + 1].code;
-				tableauPizza[i].nom = tableauPizza[i + 1].nom;
-				tableauPizza[i].prix = tableauPizza[i + 1].prix;
+				tableauPizza[i].setId(tableauPizza[i + 1].getId());
+				tableauPizza[i].setCode(tableauPizza[i + 1].getCode());
+				tableauPizza[i].setNom(tableauPizza[i + 1].getNom());
+				tableauPizza[i].setPrix(tableauPizza[i + 1].getPrix());
 
 			}
 			tailleTableau--;

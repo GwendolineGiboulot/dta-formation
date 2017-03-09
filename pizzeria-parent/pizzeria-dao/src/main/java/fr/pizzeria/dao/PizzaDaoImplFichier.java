@@ -19,7 +19,7 @@ import fr.pizzeria.model.Pizza;
 /**
  * @author Quelqun
  * 
- *         cette classe implémente IDao avec des array java
+ *         cette classe implémente IDao avec des fichiers .txt sur le disque
  *
  */
 public class PizzaDaoImplFichier implements IDao<Pizza, String> {
@@ -56,7 +56,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 		List<String> lines = Arrays.asList(pizza.toCSV());
 
 		try {
-			Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
+			Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.getCode() + ".txt"), lines, StandardOpenOption.CREATE);
 		} catch (IOException e) {
 			throw new DaoRuntimeException(e);
 		}
@@ -74,7 +74,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 				Files.delete(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"));
 
-				Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.code + ".txt"), lines, StandardOpenOption.CREATE);
+				Files.write(Paths.get(CHEMIN_SAUVEGARDE + pizza.getCode() + ".txt"), lines, StandardOpenOption.CREATE);
 			} catch (IOException e) {
 				throw new DaoRuntimeException(e);
 			}

@@ -16,27 +16,55 @@ public class Pizza {
 	/**
 	 * l'id de la pizza
 	 */
-	public int id;
+	private int id;
 	/**
 	 * le code de la pizza
 	 */
 	@ToString
-	public String code;
+	private String code;
 	/**
 	 * le nom de la pizza
 	 */
 	@ToString
-	public String nom;
+	private String nom;
 	/**
 	 * le prix de la pizza
 	 */
 	@ToString
-	public Double prix;
+	private Double prix;
 	/**
 	 * la categorie de la pizza (viande, poisson ou sans viande)
 	 */
 	@ToString
-	public CategoriePizza categorie;
+	private CategoriePizza categorie;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrix(Double prix) {
+		this.prix = prix;
+	}
 
 	public Double getPrix() {
 		return prix;
@@ -72,7 +100,7 @@ public class Pizza {
 
 				ToString annotationTrouve = champ.getAnnotation(ToString.class);
 
-				if (!champ.getAnnotation(ToString.class).uppercase() && annotationTrouve != null) {
+				if (annotationTrouve != null && !champ.getAnnotation(ToString.class).uppercase()) {
 
 					temp += champ.get(this).toString() + " ";
 				} else {
