@@ -29,8 +29,9 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			ResourceBundle bundle = ResourceBundle.getBundle("conf/jdbc");
 			String user = bundle.getString("user");
 			String password = bundle.getString("password");
+			String adresse = bundle.getString("adresse");
 
-			connection = DriverManager.getConnection("jdbc:mysql://" + ADRESSE_BASE + ":3306/pizzeria", user, password);
+			connection = DriverManager.getConnection(adresse, user, password);
 
 		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
