@@ -38,6 +38,15 @@ public class Pizza {
 	@ToString
 	private CategoriePizza categorie;
 
+	public Pizza(int id, String code, String nom, double prix, CategoriePizza categorie) {
+		this.id = id;
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = categorie;
+
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -80,15 +89,6 @@ public class Pizza {
 
 	public void setCategorie(CategoriePizza categorie) {
 		this.categorie = categorie;
-	}
-
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categorie) {
-		this.id = id;
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
-		this.categorie = categorie;
-
 	}
 
 	@Override

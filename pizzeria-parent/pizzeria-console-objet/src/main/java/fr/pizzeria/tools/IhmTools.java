@@ -6,8 +6,20 @@ import java.util.Scanner;
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author Quelqun
+ *
+ */
 public class IhmTools {
 
+	private IDao<Pizza, String> pizzaDao;
+	private Scanner reader = new Scanner(System.in);
+
+	/**
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
+	 */
 	public IhmTools() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		ResourceBundle bundle = ResourceBundle.getBundle("conf/application");
@@ -18,9 +30,6 @@ public class IhmTools {
 		pizzaDao = dao;
 
 	}
-
-	private IDao<Pizza, String> pizzaDao;
-	private Scanner reader = new Scanner(System.in);
 
 	public IDao<Pizza, String> getPizzaDao() {
 		return pizzaDao;
