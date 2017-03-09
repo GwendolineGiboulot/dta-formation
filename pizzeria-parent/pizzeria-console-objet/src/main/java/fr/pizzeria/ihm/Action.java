@@ -6,13 +6,24 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 public abstract class Action {
 
 	abstract void faireAction(IhmTools ihmTools);
 
 	abstract String getLibelle();
 
-	public Pizza SaisirPizza(Scanner c) {
+	/**
+	 * @param c
+	 * @return
+	 * 
+	 * 		permet de faire remplir un objet pizza par l'utilisateur
+	 */
+
+	public Pizza saisirPizza(Scanner c) {
 
 		System.out.println("Veuillez saisir le code");
 

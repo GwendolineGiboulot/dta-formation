@@ -20,6 +20,7 @@ public enum CategoriePizza {
 		throw new IllegalArgumentException();
 	}
 
+	@Override
 	public String toString() {
 		return this.getLibelle();
 	}

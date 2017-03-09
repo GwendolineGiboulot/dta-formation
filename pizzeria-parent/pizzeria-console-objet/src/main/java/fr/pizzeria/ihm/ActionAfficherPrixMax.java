@@ -20,7 +20,7 @@ public class ActionAfficherPrixMax extends Action {
 		List<Pizza> result = tableauPizza.stream().filter(p -> p.getPrix().equals(prixMax))
 				.collect(Collectors.toList());
 
-		result.forEach(p -> System.out.println(p));
+		result.forEach(System.out::println);
 
 	}
 

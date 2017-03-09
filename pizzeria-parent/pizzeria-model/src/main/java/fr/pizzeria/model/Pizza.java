@@ -7,15 +7,36 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import fr.pizzeria.exception.ModelRuntimeException;
 
+/**
+ * @author Quelqun
+ *
+ */
 public class Pizza {
 
+	/**
+	 * l'id de la pizza
+	 */
 	public int id;
+	/**
+	 * le code de la pizza
+	 */
 	@ToString
 	public String code;
+	/**
+	 * le nom de la pizza
+	 */
 	@ToString
 	public String nom;
+	/**
+	 * le prix de la pizza
+	 */
 	@ToString
 	public Double prix;
+	/**
+	 * la categorie de la pizza (viande, poisson ou sans viande)
+	 */
+	@ToString
+	public CategoriePizza categorie;
 
 	public Double getPrix() {
 		return prix;
@@ -24,9 +45,6 @@ public class Pizza {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
-	@ToString
-	public CategoriePizza categorie;
 
 	public CategoriePizza getCategorie() {
 		return categorie;
@@ -54,20 +72,19 @@ public class Pizza {
 
 				ToString annotationTrouve = champ.getAnnotation(ToString.class);
 
-				if (annotationTrouve != null) {
+				if (!champ.getAnnotation(ToString.class).uppercase() && annotationTrouve != null) {
 
-					if (!champ.getAnnotation(ToString.class).uppercase()) {
-
-						temp += champ.get(this).toString() + " ";
-					} else {
-						temp += champ.get(this).toString().toUpperCase() + " ";
-					}
+					temp += champ.get(this).toString() + " ";
+				} else {
+					temp += champ.get(this).toString().toUpperCase() + " ";
 				}
-
 			}
+
 		}
 
-		catch (IllegalArgumentException | IllegalAccessException e) {
+		catch (IllegalArgumentException |
+
+				IllegalAccessException e) {
 			throw new ModelRuntimeException(e);
 
 		}

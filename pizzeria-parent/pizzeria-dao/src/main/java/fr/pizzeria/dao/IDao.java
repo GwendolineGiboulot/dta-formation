@@ -10,7 +10,7 @@ import fr.pizzeria.exception.UpdateDaoException;
  * @author Quelqun
  *
  * @param <E>
- * @param <Id>
+ * @param <ID>
  */
 public interface IDao<E, ID> {
 

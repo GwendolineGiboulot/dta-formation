@@ -14,7 +14,7 @@ public class ActionMettreAJour extends Action {
 		System.out.println("Veuillez saisir le code de la pizza à mettre à jour");
 		String codeARemplacer = ihmTools.getReader().nextLine();
 
-		Pizza pizza = SaisirPizza(ihmTools.getReader());
+		Pizza pizza = saisirPizza(ihmTools.getReader());
 
 		try {
 			ihmTools.getPizzaDao().updatePizza(codeARemplacer, pizza);
