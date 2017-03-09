@@ -33,7 +33,8 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	 * Ce constructeur permet la connexion à la BDD mySQL
 	 * 
 	 */
-	public PizzaDaoImplBDD() {
+
+	private void ouvrirConnection() {
 
 		try {
 
@@ -47,15 +48,23 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
 		}
+	}
 
+	private void fermerConnection() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			throw new DaoRuntimeException(e);
+		}
 	}
 
 	@Override
 	public List<Pizza> findAllPizzas() {
 
-		try (Statement statement = connection.createStatement()) {
+		ouvrirConnection();
 
-			ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA");
+		try (Statement statement = connection.createStatement();
+				ResultSet resultats = statement.executeQuery("SELECT * FROM PIZZA")) {
 
 			List<Pizza> liste = new ArrayList<>();
 
@@ -71,12 +80,13 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 				liste.add(p);
 			}
 
-			resultats.close();
+			fermerConnection();
 
 			return liste;
 
 		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
+
 		}
 
 	}
@@ -84,10 +94,11 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
 
-		try {
+		ouvrirConnection();
 
-			PreparedStatement updatePizzaSt = connection
-					.prepareStatement("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)");
+		try (PreparedStatement updatePizzaSt = connection
+				.prepareStatement("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)")) {
+
 			updatePizzaSt.setString(1, pizza.getCode());
 			updatePizzaSt.setString(2, pizza.getNom());
 			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
@@ -100,15 +111,18 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			throw new SaveDaoException(e);
 		}
 
+		fermerConnection();
+
 	}
 
 	@Override
 	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
 
-		try {
+		ouvrirConnection();
 
-			PreparedStatement updatePizzaSt = connection
-					.prepareStatement("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?");
+		try (PreparedStatement updatePizzaSt = connection
+				.prepareStatement("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?")) {
+
 			updatePizzaSt.setString(1, pizza.getCode());
 			updatePizzaSt.setString(2, pizza.getNom());
 			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
@@ -122,14 +136,17 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			throw new UpdateDaoException(e);
 		}
 
+		fermerConnection();
+
 	}
 
 	@Override
 	public void deletePizza(String code) throws DeleteDaoException {
 
-		try {
+		ouvrirConnection();
 
-			PreparedStatement updatePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE=?");
+		try (PreparedStatement updatePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE=?")) {
+
 			updatePizzaSt.setString(1, code);
 			updatePizzaSt.executeUpdate();
 
@@ -138,6 +155,8 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 		} catch (SQLException e) {
 			throw new DeleteDaoException(e);
 		}
+
+		fermerConnection();
 
 	}
 
