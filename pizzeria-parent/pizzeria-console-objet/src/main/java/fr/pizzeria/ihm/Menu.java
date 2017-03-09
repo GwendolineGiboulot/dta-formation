@@ -6,6 +6,10 @@ import java.util.Map;
 import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 public abstract class Menu {
 
 	protected Map<Integer, Action> menuAction = new HashMap<>();
@@ -14,6 +18,9 @@ public abstract class Menu {
 
 	}
 
+	/**
+	 * lance le menu principal
+	 */
 	public void demarrer() {
 
 		try {

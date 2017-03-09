@@ -8,6 +8,10 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 @OptionMenu
 public class ActionListerCategorie extends Action {
 

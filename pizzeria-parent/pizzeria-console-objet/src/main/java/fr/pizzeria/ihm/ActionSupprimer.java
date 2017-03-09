@@ -4,6 +4,10 @@ import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 @OptionMenu
 public class ActionSupprimer extends Action {
 

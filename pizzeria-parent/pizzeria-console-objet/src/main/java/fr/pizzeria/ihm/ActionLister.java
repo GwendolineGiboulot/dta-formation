@@ -5,6 +5,10 @@ import java.util.List;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 @OptionMenu
 public class ActionLister extends Action {
 

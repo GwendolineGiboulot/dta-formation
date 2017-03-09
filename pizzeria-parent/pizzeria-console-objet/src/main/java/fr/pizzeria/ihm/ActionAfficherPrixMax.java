@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 @OptionMenu
 public class ActionAfficherPrixMax extends Action {
 

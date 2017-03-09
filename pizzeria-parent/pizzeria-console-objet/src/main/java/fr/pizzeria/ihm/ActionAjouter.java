@@ -5,6 +5,10 @@ import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.tools.IhmTools;
 
+/**
+ * @author Quelqun
+ *
+ */
 @OptionMenu
 public class ActionAjouter extends Action {
 
