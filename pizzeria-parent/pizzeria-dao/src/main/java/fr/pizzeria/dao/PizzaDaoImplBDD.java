@@ -43,9 +43,8 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			String password = bundle.getString("password");
 			String adresse = bundle.getString("adresse");
 
-			Connection connection = DriverManager.getConnection(adresse, user, password);
+			return DriverManager.getConnection(adresse, user, password);
 
-			return connection;
 		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
 		}
@@ -86,7 +85,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 		void execute(PreparedStatement st) throws SQLException;
 	}
 
-	public void ExecuteUpdate(String sql, Exec ex) {
+	public void executeUpdate(String sql, Exec ex) {
 
 		try (Connection connection = ouvrirConnection();
 				PreparedStatement updatePizzaSt = connection.prepareStatement(sql)) {
@@ -102,17 +101,14 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	@Override
 	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
 
-		ExecuteUpdate("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)", new Exec() {
+		executeUpdate("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)", st -> {
 
-			@Override
-			public void execute(PreparedStatement st) throws SQLException {
-				st.setString(1, pizza.getCode());
-				st.setString(2, pizza.getNom());
-				st.setFloat(3, pizza.getPrix().floatValue());
-				st.setString(4, pizza.getCategorie().toString());
-				st.executeUpdate();
+			st.setString(1, pizza.getCode());
+			st.setString(2, pizza.getNom());
+			st.setFloat(3, pizza.getPrix().floatValue());
+			st.setString(4, pizza.getCategorie().toString());
+			st.executeUpdate();
 
-			}
 		});
 
 	}
@@ -120,18 +116,15 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	@Override
 	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
 
-		ExecuteUpdate("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?", new Exec() {
+		executeUpdate("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?", st -> {
 
-			@Override
-			public void execute(PreparedStatement st) throws SQLException {
-				st.setString(1, pizza.getCode());
-				st.setString(2, pizza.getNom());
-				st.setFloat(3, pizza.getPrix().floatValue());
-				st.setString(4, pizza.getCategorie().toString());
-				st.setString(5, code);
-				st.executeUpdate();
+			st.setString(1, pizza.getCode());
+			st.setString(2, pizza.getNom());
+			st.setFloat(3, pizza.getPrix().floatValue());
+			st.setString(4, pizza.getCategorie().toString());
+			st.setString(5, code);
+			st.executeUpdate();
 
-			}
 		});
 
 	}
