@@ -20,6 +20,7 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 	Connection connection;
+	static final String ADRESSE_BASE = "localhost";
 
 	public PizzaDaoImplBDD() {
 
@@ -29,7 +30,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			String user = bundle.getString("user");
 			String password = bundle.getString("password");
 
-			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pizzeria", user, password);
+			connection = DriverManager.getConnection("jdbc:mysql://" + ADRESSE_BASE + ":3306/pizzeria", user, password);
 
 		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
