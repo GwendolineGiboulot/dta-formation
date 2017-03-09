@@ -28,7 +28,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 <activeByDefault>true</activeByDefault>
 </activation>
 <properties>
-	<impldao>fr.pizzeria.dao.PizzaDaoImplTableau</impldao>
+	<impldao>fr.pizzeria.dao.PizzaDaoImplBDD</impldao>
 </properties>
   <build>
     <resources>
