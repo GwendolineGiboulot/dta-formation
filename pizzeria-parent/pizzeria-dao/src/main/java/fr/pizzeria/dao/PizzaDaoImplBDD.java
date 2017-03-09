@@ -17,11 +17,22 @@ import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author Quelqun
+ * 
+ *         Cette classe implémente l'interface IDao avec une base de donnée
+ *         mySQL
+ *
+ */
 public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 	Connection connection;
-	static final String ADRESSE_BASE = "localhost";
 
+	/**
+	 * 
+	 * Ce constructeur permet la connexion à la BDD mySQL
+	 * 
+	 */
 	public PizzaDaoImplBDD() {
 
 		try {

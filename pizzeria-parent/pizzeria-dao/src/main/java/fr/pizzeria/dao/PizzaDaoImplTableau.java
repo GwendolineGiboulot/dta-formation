@@ -10,12 +10,23 @@ import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author Quelqun
+ * 
+ *         cette classe implémente IDao avec des fichiers .txt sur le disque
+ *
+ */
 public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
-	private Pizza tableauPizza[] = new Pizza[100];
+	private Pizza[] tableauPizza = new Pizza[100];
 
 	private int tailleTableau = 0;
 
+	/**
+	 * 
+	 * Ce constructeur initialize le tableau avec 8 pizzas
+	 * 
+	 */
 	public PizzaDaoImplTableau() {
 
 		tableauPizza[0] = new Pizza(0, "PEP", "Pépéronni", 12.50, CategoriePizza.POISSON);
@@ -33,7 +44,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 	@Override
 	public List<Pizza> findAllPizzas() {
-		Pizza tableauARenvoyer[] = new Pizza[tailleTableau];
+		Pizza[] tableauARenvoyer = new Pizza[tailleTableau];
 
 		for (int i = 0; i < tailleTableau; ++i) {
 			tableauARenvoyer[i] = tableauPizza[i];

@@ -16,6 +16,12 @@ import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author Quelqun
+ * 
+ *         cette classe implémente IDao avec des array java
+ *
+ */
 public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 	static final String CHEMIN_SAUVEGARDE = "data\\";

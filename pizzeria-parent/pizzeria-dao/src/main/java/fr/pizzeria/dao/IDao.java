@@ -12,7 +12,7 @@ import fr.pizzeria.exception.UpdateDaoException;
  * @param <E>
  * @param <Id>
  */
-public interface IDao<E, Id> {
+public interface IDao<E, ID> {
 
 	/**
 	 * @return
@@ -30,12 +30,12 @@ public interface IDao<E, Id> {
 	 * @param pizza
 	 * @throws UpdateDaoException
 	 */
-	void updatePizza(Id code, E pizza) throws UpdateDaoException;
+	void updatePizza(ID code, E pizza) throws UpdateDaoException;
 
 	/**
 	 * @param code
 	 * @throws DeleteDaoException
 	 */
-	void deletePizza(Id code) throws DeleteDaoException;
+	void deletePizza(ID code) throws DeleteDaoException;
 
 }
