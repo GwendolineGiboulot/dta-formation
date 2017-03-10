@@ -14,6 +14,9 @@ public class MenuReflection extends Menu {
 
 	/**
 	 * 
+	 * ce constructeur fabrique un menu automatiquement un menu a partir des
+	 * items ayant l'anotation OptionMenu
+	 * 
 	 */
 	public MenuReflection() {
 		Reflections reflections = new Reflections("fr.pizzeria.ihm");

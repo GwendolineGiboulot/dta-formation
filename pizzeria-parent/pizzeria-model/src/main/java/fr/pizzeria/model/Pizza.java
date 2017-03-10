@@ -101,7 +101,7 @@ public class Pizza {
 	@Override
 	public String toString() {
 
-		String temp = "";
+		StringBuilder temp = new StringBuilder("");
 		try {
 			for (Field champ : this.getClass().getDeclaredFields()) {
 
@@ -109,9 +109,9 @@ public class Pizza {
 
 				if (annotationTrouve != null && !champ.getAnnotation(ToString.class).uppercase()) {
 
-					temp += champ.get(this).toString() + " ";
+					temp.append(champ.get(this).toString() + " ");
 				} else {
-					temp += champ.get(this).toString().toUpperCase() + " ";
+					temp.append(champ.get(this).toString().toUpperCase() + " ");
 				}
 			}
 
@@ -123,7 +123,7 @@ public class Pizza {
 			throw new ModelRuntimeException(e);
 
 		}
-		return temp;
+		return temp.toString();
 	}
 
 	/**

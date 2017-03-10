@@ -88,7 +88,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 		void execute(PreparedStatement st) throws SQLException;
 	}
 
-	public void executeUpdate(String sql, Exec ex) {
+	private void executeUpdate(String sql, Exec ex) {
 
 		try (Connection connection = ouvrirConnection();
 				PreparedStatement updatePizzaSt = connection.prepareStatement(sql)) {
