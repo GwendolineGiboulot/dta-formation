@@ -27,7 +27,6 @@ public class IhmTools {
 		String daoImpl = bundle.getString("dao.impl");
 
 		IDao<Pizza, String> dao = (IDao<Pizza, String>) Class.forName(daoImpl).newInstance();
-
 		pizzaDao = dao;
 
 	}

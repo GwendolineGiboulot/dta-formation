@@ -2,6 +2,11 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -11,11 +16,14 @@ import fr.pizzeria.exception.ModelRuntimeException;
  * @author Quelqun
  *
  */
+@Entity
 public class Pizza {
 
 	/**
 	 * l'id de la pizza
 	 */
+	@Id
+	@GeneratedValue
 	private int id;
 	/**
 	 * le code de la pizza
@@ -35,6 +43,7 @@ public class Pizza {
 	/**
 	 * la categorie de la pizza (viande, poisson ou sans viande)
 	 */
+	@Enumerated
 	@ToString
 	private CategoriePizza categorie;
 
