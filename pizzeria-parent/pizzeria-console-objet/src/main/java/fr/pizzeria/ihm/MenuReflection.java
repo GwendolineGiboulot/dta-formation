@@ -6,8 +6,15 @@ import org.reflections.Reflections;
 
 import fr.pizzeria.exception.IhmRuntimeException;
 
+/**
+ * @author Quelqun
+ *
+ */
 public class MenuReflection extends Menu {
 
+	/**
+	 * 
+	 */
 	public MenuReflection() {
 		Reflections reflections = new Reflections("fr.pizzeria.ihm");
 

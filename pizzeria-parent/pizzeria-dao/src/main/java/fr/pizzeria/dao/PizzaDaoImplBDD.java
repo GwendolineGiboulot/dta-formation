@@ -74,8 +74,17 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 	}
 
+	/**
+	 * @author Quelqun
+	 *
+	 */
 	@FunctionalInterface
 	interface Exec {
+
+		/**
+		 * @param st
+		 * @throws SQLException
+		 */
 		void execute(PreparedStatement st) throws SQLException;
 	}
 
@@ -161,7 +170,8 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 
 	}
 
-	void insererLot(PreparedStatement updatePizzaSt, List<Pizza> pizl, Connection connection) throws SQLException {
+	private void insererLot(PreparedStatement updatePizzaSt, List<Pizza> pizl, Connection connection)
+			throws SQLException {
 
 		for (Pizza pizza : pizl) {
 

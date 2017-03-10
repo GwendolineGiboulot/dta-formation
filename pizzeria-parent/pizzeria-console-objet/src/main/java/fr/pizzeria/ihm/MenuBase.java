@@ -1,7 +1,14 @@
 package fr.pizzeria.ihm;
 
+/**
+ * @author Quelqun
+ *
+ */
 public class MenuBase extends Menu {
 
+	/**
+	 * 
+	 */
 	public MenuBase() {
 
 		menuAction.put(1, new ActionLister());

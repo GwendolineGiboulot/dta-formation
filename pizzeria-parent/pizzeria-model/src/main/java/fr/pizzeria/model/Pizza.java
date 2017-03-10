@@ -38,6 +38,13 @@ public class Pizza {
 	@ToString
 	private CategoriePizza categorie;
 
+	/**
+	 * @param id
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categorie
+	 */
 	public Pizza(int id, String code, String nom, double prix, CategoriePizza categorie) {
 		this.id = id;
 		this.code = code;
@@ -119,6 +126,12 @@ public class Pizza {
 		return temp;
 	}
 
+	/**
+	 * @return
+	 * 
+	 * 		Comme toString mais avec des ; entre les champs pour pouvoir
+	 *         exporter en csv
+	 */
 	public String toCSV() {
 
 		String temp = "";
