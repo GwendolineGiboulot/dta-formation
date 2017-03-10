@@ -1,9 +1,5 @@
 package fr.pizzeria.dao;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.commons.collections4.ListUtils;
 
@@ -145,28 +139,9 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void importer() {
+	public void importer(IDao<Pizza, String> source) {
 
-		List<Pizza> liste = new ArrayList<>();
-
-		try (Stream<Path> files = Files.list(Paths.get("data\\"))) {
-
-			liste = files.map(chemin -> {
-
-				try (Stream<String> lines = Files.lines(chemin)) {
-
-					String[] items = lines.findFirst().get().split(";");
-					return new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
-							CategoriePizza.getEnum(items[4]));
-				} catch (IOException e) {
-					throw new DaoRuntimeException(e);
-				}
-
-			}).collect(Collectors.toList());
-
-		} catch (IOException e) {
-			throw new DaoRuntimeException(e);
-		}
+		List<Pizza> liste = source.findAllPizzas();
 
 		List<List<Pizza>> listePartionne = ListUtils.partition(liste, 3);
 
@@ -180,33 +155,25 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 				insererLot(updatePizzaSt, pizl, connection);
 			}
 
-		} catch (
-
-		SQLException e) {
+		} catch (SQLException e) {
 			throw new DaoRuntimeException(e);
 		}
 
 	}
 
-	void insererLot(PreparedStatement updatePizzaSt, List<Pizza> pizl, Connection connection) {
+	void insererLot(PreparedStatement updatePizzaSt, List<Pizza> pizl, Connection connection) throws SQLException {
 
-		try {
-			if (pizl.size() == 3) {
-				for (Pizza pizza : pizl) {
+		for (Pizza pizza : pizl) {
 
-					updatePizzaSt.setString(1, pizza.getCode());
-					updatePizzaSt.setString(2, pizza.getNom());
-					updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
-					updatePizzaSt.setString(4, pizza.getCategorie().toString());
-					updatePizzaSt.executeUpdate();
-				}
-
-			}
-
-			connection.commit();
-		} catch (SQLException e) {
-			throw new DaoRuntimeException(e);
+			updatePizzaSt.setString(1, pizza.getCode());
+			updatePizzaSt.setString(2, pizza.getNom());
+			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
+			updatePizzaSt.setString(4, pizza.getCategorie().toString());
+			updatePizzaSt.executeUpdate();
 		}
+
+		connection.commit();
+
 	}
 
 }
