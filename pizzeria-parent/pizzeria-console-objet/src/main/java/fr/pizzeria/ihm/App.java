@@ -1,7 +1,7 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Quelqun
@@ -23,11 +23,7 @@ public class App {
 	 */
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
-		Pizza p1 = new Pizza(12, "RTE", "la meilleure pizza", 78.25, CategoriePizza.VIANDE);
-
-		Pizza p2 = new Pizza(12, "RTE", "la meilleure pizza", 78.25, CategoriePizza.VIANDE);
-
-		System.out.println(p1.equals(p2));
+		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
 		new MenuReflection().demarrer();
 

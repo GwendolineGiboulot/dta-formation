@@ -67,7 +67,7 @@ public class IhmTools {
 		System.out.println("Veuillez saisir la cat�gorie");
 		String categorie = c.nextLine();
 
-		return new Pizza(36, code, nom, prix, CategoriePizza.getEnum(categorie));
+		return new Pizza(code, nom, prix, CategoriePizza.getEnum(categorie));
 
 	}
 

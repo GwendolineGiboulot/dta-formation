@@ -60,7 +60,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 				float price = resultats.getFloat("prix");
 				CategoriePizza categ = CategoriePizza.getEnum(resultats.getString("categorie"));
 
-				Pizza p = new Pizza(id, code, name, price, categ);
+				Pizza p = new Pizza(code, name, price, categ);
 
 				liste.add(p);
 			}

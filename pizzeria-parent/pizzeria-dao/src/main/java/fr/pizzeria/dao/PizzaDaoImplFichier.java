@@ -36,7 +36,8 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 				try (Stream<String> lines = Files.lines(chemin)) {
 
 					String[] items = lines.findFirst().get().split(";");
-					return new Pizza(Integer.parseInt(items[0]), items[1], items[2], Double.parseDouble(items[3]),
+					Integer.parseInt(items[0]);
+					return new Pizza(items[1], items[2], Double.parseDouble(items[3]),
 							CategoriePizza.getEnum(items[4]));
 				} catch (IOException e) {
 					throw new DaoRuntimeException(e);

@@ -2,9 +2,12 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -23,27 +26,30 @@ public class Pizza {
 	 * l'id de la pizza
 	 */
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	/**
 	 * le code de la pizza
 	 */
+	@Column(name = "code", length = 5, nullable = false, unique = true)
 	@ToString
 	private String code;
 	/**
 	 * le nom de la pizza
 	 */
+	@Column(name = "nom", length = 25)
 	@ToString
 	private String nom;
 	/**
 	 * le prix de la pizza
 	 */
+	@Column(name = "prix")
 	@ToString
 	private Double prix;
 	/**
 	 * la categorie de la pizza (viande, poisson ou sans viande)
 	 */
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	@ToString
 	private CategoriePizza categorie;
 
@@ -54,12 +60,15 @@ public class Pizza {
 	 * @param prix
 	 * @param categorie
 	 */
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categorie) {
-		this.id = id;
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = categorie;
+
+	}
+
+	public Pizza() {
 
 	}
 
