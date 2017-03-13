@@ -27,6 +27,7 @@ public class IhmTools {
 		String daoImpl = bundle.getString("dao.impl");
 
 		IDao<Pizza, String> dao = (IDao<Pizza, String>) Class.forName(daoImpl).newInstance();
+
 		pizzaDao = dao;
 
 	}
@@ -64,7 +65,7 @@ public class IhmTools {
 		System.out.println("Veuillez saisir le prix");
 		double prix = c.nextDouble();
 		c.nextLine();
-		System.out.println("Veuillez saisir la cat�gorie");
+		System.out.println("Veuillez saisir la catégorie");
 		String categorie = c.nextLine();
 
 		return new Pizza(code, nom, prix, CategoriePizza.getEnum(categorie));

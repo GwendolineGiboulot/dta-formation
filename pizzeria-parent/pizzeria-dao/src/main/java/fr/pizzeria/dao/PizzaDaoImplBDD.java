@@ -45,7 +45,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 
 		try (Connection connection = ouvrirConnection();
 				Statement statement = connection.createStatement();
@@ -58,7 +58,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 				String code = resultats.getString("code");
 				String name = resultats.getString("nom");
 				float price = resultats.getFloat("prix");
-				CategoriePizza categ = CategoriePizza.getEnum(resultats.getString("categorie"));
+				CategoriePizza categ = CategoriePizza.valueOf((resultats.getString("categorie")));
 
 				Pizza p = new Pizza(code, name, price, categ);
 
@@ -102,14 +102,14 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
+	public void saveNew(Pizza pizza) throws SaveDaoException {
 
 		executeUpdate("INSERT INTO PIZZA(code,nom,prix,categorie) VALUES(?,?,?,?)", st -> {
 
 			st.setString(1, pizza.getCode());
 			st.setString(2, pizza.getNom());
 			st.setFloat(3, pizza.getPrix().floatValue());
-			st.setString(4, pizza.getCategorie().toString());
+			st.setString(4, "" + pizza.getCategorie().name());
 			st.executeUpdate();
 
 		});
@@ -117,14 +117,14 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
+	public void update(String code, Pizza pizza) throws UpdateDaoException {
 
 		executeUpdate("UPDATE PIZZA SET code=? ,nom=? ,prix=? ,categorie = ? WHERE CODE=?", st -> {
 
 			st.setString(1, pizza.getCode());
 			st.setString(2, pizza.getNom());
 			st.setFloat(3, pizza.getPrix().floatValue());
-			st.setString(4, pizza.getCategorie().toString());
+			st.setString(4, "" + pizza.getCategorie().name());
 			st.setString(5, code);
 			st.executeUpdate();
 
@@ -133,7 +133,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void deletePizza(String code) throws DeleteDaoException {
+	public void delete(String code) throws DeleteDaoException {
 
 		try (Connection connection = ouvrirConnection();
 				PreparedStatement updatePizzaSt = connection.prepareStatement("DELETE FROM PIZZA WHERE CODE=?")) {
@@ -150,7 +150,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 	@Override
 	public void importer(IDao<Pizza, String> source) {
 
-		List<Pizza> liste = source.findAllPizzas();
+		List<Pizza> liste = source.findAll();
 
 		List<List<Pizza>> listePartionne = ListUtils.partition(liste, 3);
 
@@ -178,7 +178,7 @@ public class PizzaDaoImplBDD implements IDao<Pizza, String> {
 			updatePizzaSt.setString(1, pizza.getCode());
 			updatePizzaSt.setString(2, pizza.getNom());
 			updatePizzaSt.setFloat(3, pizza.getPrix().floatValue());
-			updatePizzaSt.setString(4, pizza.getCategorie().toString());
+			updatePizzaSt.setString(4, pizza.getCategorie().name());
 			updatePizzaSt.executeUpdate();
 		}
 

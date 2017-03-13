@@ -21,7 +21,7 @@ public class ActionMettreAJour extends Action {
 		Pizza pizza = ihmTools.saisirPizza(ihmTools.getReader());
 
 		try {
-			ihmTools.getPizzaDao().updatePizza(codeARemplacer, pizza);
+			ihmTools.getPizzaDao().update(codeARemplacer, pizza);
 		} catch (UpdateDaoException e) {
 			throw new IhmRuntimeException(e);
 		}

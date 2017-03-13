@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>pizzeria</groupId>
+    <artifactId>valentin-pizzeria-console-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+
+<groupId>pizzeria</groupId>
+<artifactId>valentin-pizzeria-console-client</artifactId>
+<version>1.0.0</version>
+<properties>
+	<sourcedao>fr.pizzeria.dao.PizzaDaoImplFichier</sourcedao>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+
+
+
+
+<profiles>
+
+<profile>
+<id>dev</id>
+<activation>
+<activeByDefault>true</activeByDefault>
+</activation>
+<properties>
+	<impldao>fr.pizzeria.dao.PizzaDaoImplJpa</impldao>
+</properties>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+   </build>
+</profile>
+
+
+
+
+<profile>
+<id>prod</id>
+<properties>
+	<impldao>fr.pizzeria.dao.PizzaDaoImplFichier</impldao>
+</properties>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+   </build>
+</profile>
+
+</profiles>
+
+
+
+
+
+
+
+
+<build>
+<plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <!-- put your configurations here -->
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+</plugins>
+
+
+<pluginManagement>
+<plugins>
+
+	<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>fr.pizzeria.ihm.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+ 
+    </plugins>
+</pluginManagement>
+</build>
+	<dependencies>
+
+    <dependency>
+     <groupId>pizzeria</groupId>
+     <artifactId>valentin-pizzeria-model</artifactId>
+     <version>1.0.0</version>
+   </dependency>
+       <dependency>
+     <groupId>pizzeria</groupId>
+     <artifactId>valentin-pizzeria-dao</artifactId>
+     <version>1.0.0</version>
+   </dependency>
+
+<dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+</dependency>
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+
+
+   <dependency>
+    <groupId>org.hibernate.javax.persistence</groupId>
+    <artifactId>hibernate-jpa-2.1-api</artifactId>
+    <scope>runtime</scope>
+
+</dependency>
+   <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-entitymanager</artifactId>
+	</dependency>
+
+
+	</dependencies>
+</project>

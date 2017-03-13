@@ -27,7 +27,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	static final String CHEMIN_SAUVEGARDE = "data\\";
 
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 
 		try (Stream<Path> files = Files.list(Paths.get(CHEMIN_SAUVEGARDE))) {
 
@@ -51,7 +51,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) {
+	public void saveNew(Pizza pizza) {
 
 		List<String> lines = Arrays.asList(pizza.toCSV());
 
@@ -64,7 +64,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void updatePizza(String code, Pizza pizza) throws UpdateDaoException {
+	public void update(String code, Pizza pizza) throws UpdateDaoException {
 
 		if (Files.exists(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"))) {
 
@@ -86,7 +86,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void deletePizza(String code) throws DeleteDaoException {
+	public void delete(String code) throws DeleteDaoException {
 
 		if (Files.exists(Paths.get(CHEMIN_SAUVEGARDE + code + ".txt"))) {
 

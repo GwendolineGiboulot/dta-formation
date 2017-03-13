@@ -54,7 +54,12 @@ public class Pizza {
 	private CategoriePizza categorie;
 
 	/**
-	 * @param id
+	 * l'url de l'image
+	 */
+	@Column(name = "url_image")
+	private String urlImage;
+
+	/**
 	 * @param code
 	 * @param nom
 	 * @param prix
@@ -68,8 +73,32 @@ public class Pizza {
 
 	}
 
-	public Pizza() {
+	/**
+	 * @param code
+	 * @param nom
+	 * @param prix
+	 * @param categorie
+	 * @param u
+	 */
+	public Pizza(String code, String nom, double prix, CategoriePizza categorie, String u) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = categorie;
+		this.urlImage = u;
 
+	}
+
+	public Pizza() {
+		// ce constructeur est là sinon JPA est pas content
+	}
+
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 
 	public int getId() {
@@ -128,7 +157,7 @@ public class Pizza {
 				if (annotationTrouve != null && !champ.getAnnotation(ToString.class).uppercase()) {
 
 					temp.append(champ.get(this).toString() + " ");
-				} else {
+				} else if (annotationTrouve != null) {
 					temp.append(champ.get(this).toString().toUpperCase() + " ");
 				}
 			}

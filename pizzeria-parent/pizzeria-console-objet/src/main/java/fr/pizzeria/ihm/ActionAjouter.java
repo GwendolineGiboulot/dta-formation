@@ -18,7 +18,7 @@ public class ActionAjouter extends Action {
 		Pizza pizza = ihmTools.saisirPizza(ihmTools.getReader());
 
 		try {
-			ihmTools.getPizzaDao().saveNewPizza(pizza);
+			ihmTools.getPizzaDao().saveNew(pizza);
 		} catch (SaveDaoException e) {
 			throw new IhmRuntimeException(e);
 		}

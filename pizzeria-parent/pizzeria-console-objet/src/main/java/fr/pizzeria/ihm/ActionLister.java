@@ -15,7 +15,7 @@ public class ActionLister extends Action {
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAllPizzas();
+		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAll();
 
 		for (Pizza pizza : tableauPizza) {
 

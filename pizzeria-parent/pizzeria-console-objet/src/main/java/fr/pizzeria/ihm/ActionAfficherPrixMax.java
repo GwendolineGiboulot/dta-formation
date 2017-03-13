@@ -16,7 +16,7 @@ public class ActionAfficherPrixMax extends Action {
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAllPizzas();
+		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAll();
 
 		double prixMax = tableauPizza.stream().max((p1, p2) -> Double.compare(p1.getPrix(), p2.getPrix())).get()
 				.getPrix();

@@ -43,7 +43,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public List<Pizza> findAllPizzas() {
+	public List<Pizza> findAll() {
 		Pizza[] tableauARenvoyer = new Pizza[tailleTableau];
 
 		for (int i = 0; i < tailleTableau; ++i) {
@@ -56,7 +56,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void saveNewPizza(Pizza pizza) throws SaveDaoException {
+	public void saveNew(Pizza pizza) throws SaveDaoException {
 
 		if (pizza.getCode().length() != 3) {
 			throw new SaveDaoException("Un code doit faire 3 caractère");
@@ -84,7 +84,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void updatePizza(String codePizza, Pizza pizza) throws UpdateDaoException {
+	public void update(String codePizza, Pizza pizza) throws UpdateDaoException {
 
 		boolean trouve = false;
 		int numPizza = -1;
@@ -108,7 +108,7 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws DeleteDaoException {
+	public void delete(String codePizza) throws DeleteDaoException {
 		boolean trouve = false;
 		int numPizza = -1;
 		for (int i = 0; i < tailleTableau; ++i) {

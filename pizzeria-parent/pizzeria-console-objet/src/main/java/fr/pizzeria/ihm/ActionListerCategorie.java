@@ -18,7 +18,7 @@ public class ActionListerCategorie extends Action {
 	@Override
 	void faireAction(IhmTools ihmTools) {
 
-		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAllPizzas();
+		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAll();
 
 		Map<CategoriePizza, List<Pizza>> map = tableauPizza.stream()
 				.collect(Collectors.groupingBy(Pizza::getCategorie));

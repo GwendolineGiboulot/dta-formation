@@ -23,6 +23,8 @@ public abstract class Menu {
 	 */
 	public void demarrer() {
 
+		System.out.println("PIZZERIA CLIENT !!!!!!!!!!!");
+
 		try {
 
 			int choix = 0;
@@ -35,7 +37,12 @@ public abstract class Menu {
 
 				menuAction.forEach((k, v) -> {
 
-					System.out.println(k + " : " + v.getLibelle());
+					if (!ihmTools.isEstConnecte() && v.getClass().getAnnotation(OptionMenu.class).afficherSansLogin()
+							|| ihmTools.isEstConnecte()
+									&& !v.getClass().getAnnotation(OptionMenu.class).afficherSansLogin()) {
+
+						System.out.println(k + " : " + v.getLibelle());
+					}
 
 				});
 
@@ -48,14 +55,23 @@ public abstract class Menu {
 					break;
 				} else {
 					if (choix > 0 && choix < menuAction.size() + 1)
-						menuAction.get(choix).faireAction(ihmTools);
+
+						if (!ihmTools.isEstConnecte()
+								&& menuAction.get(choix).getClass().getAnnotation(OptionMenu.class).afficherSansLogin()
+								|| ihmTools.isEstConnecte() && !menuAction.get(choix).getClass()
+										.getAnnotation(OptionMenu.class).afficherSansLogin()) {
+
+							menuAction.get(choix).faireAction(ihmTools);
+						}
 
 				}
 
 			}
 
 			ihmTools.getReader().close();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		} catch (InstantiationException | IllegalAccessException |
+
+				ClassNotFoundException e) {
 			throw new IhmRuntimeException(e);
 		}
 	}

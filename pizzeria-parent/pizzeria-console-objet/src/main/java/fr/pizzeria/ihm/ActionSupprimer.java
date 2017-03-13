@@ -18,7 +18,7 @@ public class ActionSupprimer extends Action {
 		String codePizza = ihmTools.getReader().next();
 
 		try {
-			ihmTools.getPizzaDao().deletePizza(codePizza);
+			ihmTools.getPizzaDao().delete(codePizza);
 		} catch (DeleteDaoException e) {
 			throw new IhmRuntimeException(e);
 		}
