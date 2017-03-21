@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>Dit se plet name</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>toto</display-name>
+		<servlet-name>toto</servlet-name>
+		<servlet-class>test.toto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>toto</servlet-name>
+		<url-pattern>/toto</url-pattern>
+	</servlet-mapping>
+</web-app>
