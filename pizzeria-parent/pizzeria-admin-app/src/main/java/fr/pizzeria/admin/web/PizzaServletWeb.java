@@ -42,9 +42,21 @@ public class PizzaServletWeb extends HttpServlet {
 		response.getWriter().println("<!DOCTYPE html>");
 		response.getWriter().println("<html>");
 		response.getWriter().println("<head>");
+
+		response.getWriter().println(
+				"    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> ");
+		response.getWriter().println(
+				"   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js'></script> ");
+		response.getWriter().println(
+				"  <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script> ");
+
 		response.getWriter().println("</head>");
 		response.getWriter().println("<body>");
-		response.getWriter().println("<table>");
+
+		response.getWriter().println(" <div class='jumbotron'> ");
+		response.getWriter().println(" <div class='container'> ");
+
+		response.getWriter().println("<table class='table'>");
 
 		for (Pizza pizza : lPiz) {
 
@@ -56,6 +68,10 @@ public class PizzaServletWeb extends HttpServlet {
 		}
 
 		response.getWriter().println("</table>");
+
+		response.getWriter().println(" </div> ");
+		response.getWriter().println(" </div> ");
+
 		response.getWriter().println("</body>");
 		response.getWriter().println("</html>");
 
@@ -81,6 +97,8 @@ public class PizzaServletWeb extends HttpServlet {
 		} catch (SaveDaoException e) {
 			throw new PizzaServletRuntimeException(e);
 		}
+
+		response.setStatus(201);
 
 		doGet(request, response);
 	}

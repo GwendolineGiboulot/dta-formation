@@ -1,32 +1,31 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.dao.PizzaDaoImplTableau;
+import fr.pizzeria.admin.tool.PizzaTool;
 import fr.pizzeria.exception.PizzaServletRuntimeException;
 import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
- * Servlet implementation class PizzaServletWebApi
+ * Servlet implementation class NouvellePizzaController
  */
-public class PizzaServletWebApi extends HttpServlet {
+public class NouvellePizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private PizzaDaoImplTableau dao;
-
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public PizzaServletWebApi() {
-		dao = new PizzaDaoImplTableau();
+	public NouvellePizzaController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -36,11 +35,10 @@ public class PizzaServletWebApi extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Pizza> lPiz = dao.findAll();
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/pizzas/nouvellePizza.jsp");
+		dispatcher.forward(request, response);
 
-		for (Pizza pizza : lPiz) {
-			response.getWriter().append(pizza.toString());
-		}
 	}
 
 	/**
@@ -54,17 +52,16 @@ public class PizzaServletWebApi extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prix = request.getParameter("prix");
 		String categorie = request.getParameter("categorie");
-		String url = request.getParameter("url");
 
-		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie), url);
+		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie));
 
 		try {
-			dao.saveNew(piz);
+			PizzaTool.dao.saveNew(piz);
 		} catch (SaveDaoException e) {
 			throw new PizzaServletRuntimeException(e);
 		}
 
-		response.setStatus(201);
+		response.sendRedirect("/pizzeria-admin-app/pizzas/list");
 	}
 
 }
