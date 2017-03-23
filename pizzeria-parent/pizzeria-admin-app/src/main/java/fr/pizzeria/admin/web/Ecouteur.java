@@ -4,19 +4,8 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-/**
- * Application Lifecycle Listener implementation class Ecouteur
- *
- */
 @WebListener
 public class Ecouteur implements HttpSessionListener {
-
-	/**
-	 * Default constructor.
-	 */
-	public Ecouteur() {
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpSessionListener#sessionCreated(HttpSessionEvent)

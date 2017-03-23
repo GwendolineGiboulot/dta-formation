@@ -33,7 +33,7 @@ public class FiltreLogin implements Filter {
 				&& (boolean) req.getSession().getAttribute("isConnected")) {
 			chain.doFilter(request, response);
 		} else {
-			((HttpServletResponse) response).sendRedirect("/pizzeria-admin-app/login?erreur=paslogue");
+			((HttpServletResponse) response).sendRedirect(req.getContextPath() + "/login?erreur=paslogue");
 		}
 
 	}

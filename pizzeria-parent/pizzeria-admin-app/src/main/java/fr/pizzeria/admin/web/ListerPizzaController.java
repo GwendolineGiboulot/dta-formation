@@ -35,6 +35,7 @@ public class ListerPizzaController extends HttpServlet {
 
 	}
 
+	// le doPost fait la suppresion d'une pizza
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
@@ -45,7 +46,7 @@ public class ListerPizzaController extends HttpServlet {
 			throw new PizzaServletRuntimeException(e);
 		}
 
-		response.sendRedirect("/pizzeria-admin-app/pizzas/list");
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}
 
 }

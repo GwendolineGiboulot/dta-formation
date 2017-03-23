@@ -24,17 +24,10 @@ public class PizzaServletWebApi extends HttpServlet {
 
 	private PizzaDaoImplTableau dao;
 
-	/**
-	 * Default constructor.
-	 */
 	public PizzaServletWebApi() {
 		dao = new PizzaDaoImplTableau();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

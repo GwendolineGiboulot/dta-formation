@@ -15,12 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @WebFilter(urlPatterns = "/*")
 public class TimerFilter implements Filter {
-	private FilterConfig config = null;
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		this.config = config;
-		config.getServletContext().log("TimerFilter initialized");
+
 	}
 
 	@Override
@@ -48,7 +46,6 @@ public class TimerFilter implements Filter {
 		request.getSession().getServletContext().setAttribute("cheminReq", cheminReq);
 		request.getSession().getServletContext().setAttribute("tempsReq", tempsReq);
 
-		config.getServletContext().log(path + " : " + (after - before));
 	}
 
 	@Override

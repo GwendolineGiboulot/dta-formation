@@ -33,10 +33,10 @@
  
 	<table class='table'>
 			
-	<tr><td>Code </td><td> <input type='text' name='code'  > </td></tr>
-	<tr><td>Nom  </td><td> <input type='text' name='nom'>	</td></tr>
-	<tr><td>Prix  </td><td> <input type='number' name='prix'>	</td></tr>	
-	<tr><td>Categorie </td><td> <select class='selectpicker' name='categorie'> <option>Viande</option><option>Poisson</option><option>Sans Viande</option> </select></td></tr>
+	<tr><td>Code </td><td> <input type='text' name='code' value='${pizza.code}'> </td></tr>
+	<tr><td>Nom  </td><td> <input type='text' name='nom' value='${pizza.nom}'> 	</td></tr>
+	<tr><td>Prix  </td><td> <input type='number' name='prix' value='${pizza.prix}'>	</td></tr>	
+	<tr><td>Categorie </td><td> <select class='selectpicker' name='categorie'> <option>Viande</option><option>Poisson</option><option>Sans Viande</option></select>	</td></tr>
 	<tr><td> <input type='submit' class='btn btn-success' value='VALIDER !!!!'> </td></tr>	
 	</table>
 	</form>

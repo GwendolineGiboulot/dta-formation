@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.tool.PizzaTool;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.UpdateDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -19,6 +20,8 @@ import fr.pizzeria.model.Pizza;
 public class EditerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private IDao<Pizza, String> dao = PizzaTool.DAO;
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -26,7 +29,7 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Pizza> lPiz = PizzaTool.DAO.findAll();
+		List<Pizza> lPiz = dao.findAll();
 
 		String code = request.getParameter("code");
 
@@ -62,13 +65,13 @@ public class EditerPizzaController extends HttpServlet {
 		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie));
 
 		try {
-			PizzaTool.DAO.update(oldCode, piz);
+			dao.update(oldCode, piz);
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
 		} catch (UpdateDaoException e) {
 			response.setStatus(400);
-
 			request.setAttribute("pizza", piz);
-			doGet(request, response);
+			response.sendRedirect(request.getContextPath() + "/pizzas/edit");
+
 		}
 
 	}

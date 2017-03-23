@@ -20,12 +20,15 @@
 </head>
 <body>
 
-
-
-
-
-
 <div class='container'>
+
+
+<a href="<c:url value='/logout'/>" class="btn btn-danger">Se logouter</a>
+
+<a href="<c:url value='/technique'/>" class="btn btn-info">Infos Techniques</a>
+
+
+
 <table class='table table-striped'>
 
  <thead>
@@ -50,7 +53,7 @@
 
 <td><a href=<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>><button class='btn'>Editer</button></a></td>
 <td>	
-<form action="<c:url value='/pizzas/list'></c:url>" method="post">
+<form action="<c:url value='/pizzas/list'/>" method="post">
 	<input type='hidden' name='code' value='${pizza.code}'>
 	<input type='submit' class='btn btn-danger' value ='Supprimer'>
 </form></td>

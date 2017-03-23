@@ -16,19 +16,12 @@
 </head>
 <body>
 
-
-	
-
-
 <div class='jumbotron'>
 
 
-<h2> LA TOP DU TOP MESURE TECHNIQUE DE OUF</h2>
+<h2> LA TOP DU TOP MESURE TECHNIQUE</h2>
 
 IL Y A ${nbSession} SESSION(S) OUVERTE(S) !!!!!
-
-
-
 
 
 <table>
@@ -42,14 +35,7 @@ IL Y A ${nbSession} SESSION(S) OUVERTE(S) !!!!!
 </table>
 
 
-
-
-
-
 </div>
-	
-
-
 
 
 </body>
