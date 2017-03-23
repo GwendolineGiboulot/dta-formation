@@ -125,7 +125,6 @@ public class PizzaDaoImplTableau implements IDao<Pizza, String> {
 
 			for (int i = numPizza; i < tailleTableau - 1; ++i) {
 
-				tableauPizza[i].setId(tableauPizza[i + 1].getId());
 				tableauPizza[i].setCode(tableauPizza[i + 1].getCode());
 				tableauPizza[i].setNom(tableauPizza[i + 1].getNom());
 				tableauPizza[i].setPrix(tableauPizza[i + 1].getPrix());

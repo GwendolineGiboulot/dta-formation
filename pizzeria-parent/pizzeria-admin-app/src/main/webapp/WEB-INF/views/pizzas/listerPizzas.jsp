@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
     
     <%@page import ="java.util.List" %>
     <%@page import="fr.pizzeria.model.Pizza" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+    
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ici c'est le titre</title>
 
-    <link rel='stylesheet' href='/pizzeria-admin-app/css/bootstrap.min.css'> 
-   <script src='/pizzeria-admin-app/js/jquery-1.12.4.min.js'></script> 
-  <script src='/pizzeria-admin-app/js/bootstrap.min.js'></script>
-  <script src='/pizzeria-admin-app/js/script.js'>
-  </script>  
+  <link rel='stylesheet' href=<c:url value='/css/bootstrap.min.css'></c:url>> 
+  <script src="<c:url value='/js/jquery-1.12.4.min.js'></c:url>"></script>
+  <script src="<c:url value='/js/bootstrap.min.js'></c:url>"></script>
+  <script src="<c:url value='/js/script.js'></c:url>"></script>
 </head>
 <body>
+
 
 
 
@@ -34,21 +38,25 @@
     </tr>
 	</thead>
 	<tbody>
-<%
-List<Pizza> lPiz = (List<Pizza>)request.getAttribute("lPizza");
+	
+<c:forEach var="pizza" items="${lPizza}">
+
+<tr>
+<td>${pizza.code}</td>
+<td>${pizza.nom}</td>
+<td>${pizza.prix}</td>
+<td>${pizza.categorie.libelle}</td>
 
 
+<td><a href=<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>><button class='btn'>Editer</button></a></td>
+<td>	
+<form action="<c:url value='/pizzas/list'></c:url>" method="post">
+	<input type='hidden' name='code' value='${pizza.code}'>
+	<input type='submit' class='btn btn-danger' value ='Supprimer'>
+</form></td>
 
-
-
-for (Pizza pizza : lPiz) { %>
-
-	<%= "<tr><td>" + pizza.getCode()  + "</td><td>" + pizza.getNom()  + "</td><td>" + pizza.getPrix() +"</td><td>" + pizza.getCategorie() + "</td><td>" +  "<a href=/pizzeria-admin-app/pizzas/edit?code="+ pizza.getCode()  +"><button class='btn'>Editer</button></a> <input type='button' class='btnX btn' value ='Supprimer'> " +  "</td></tr>"  %>
-
-<%	
-}
-
-%>
+</c:forEach>
+	
 </tbody>
 </table>
 

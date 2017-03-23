@@ -1,19 +1,11 @@
 package fr.pizzeria.admin.tool;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImplTableau;
+import fr.pizzeria.model.Pizza;
 
-public class PizzaTool {
+public interface PizzaTool {
 
-	public static PizzaDaoImplTableau dao;
-
-	static {
-
-		dao = new PizzaDaoImplTableau();
-	}
-
-	public PizzaTool() {
-		super();
-
-	}
+	IDao<Pizza, String> DAO = new PizzaDaoImplTableau();
 
 }

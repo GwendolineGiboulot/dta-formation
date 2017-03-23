@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8" isELIgnored="false"%>
     
-    <%@page import ="java.util.List" %>
-    <%@page import="fr.pizzeria.model.Pizza" %>
-    
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
     
@@ -20,24 +17,39 @@
 <body>
 
 
+	
 
 
 <div class='jumbotron'>
 <div class='container'>
 
-<h2> LE MEILLEUR MENU D'EDITION DE PIZZA AU MONDE</h2>
+<h2> LE MEILLEUR MENU DE LOGIN DE L'UNIVERS</h2>
+
+<c:if test="${erreur != null}">
 
 
- <form action=<c:url value='/pizzas/edit'></c:url> method="post">
+<h1>${erreur}</h1>
+</c:if>
+
+
+	
+<c:if test="${param.erreur != null}">
+
+<c:if test='${param.erreur == "paslogue"}'>
+<h1>Tu n'es pas logué, vil gredin</h1>
+</c:if>
+
+</c:if>
+
+ <form action="<c:url value='/login'></c:url>" method="post">
  
- <input type='hidden' name='oldCode' value='${pizza.code}'>
+ 
+ 
  
 	<table class='table'>
 			
-	<tr><td>Code </td><td> <input type='text' name='code' value='${pizza.code}'> </td></tr>
-	<tr><td>Nom  </td><td> <input type='text' name='nom' value='${pizza.nom}'> 	</td></tr>
-	<tr><td>Prix  </td><td> <input type='number' name='prix' value='${pizza.prix}'>	</td></tr>	
-	<tr><td>Categorie </td><td> <select class='selectpicker' name='categorie'> <option>Viande</option><option>Poisson</option><option>Sans Viande</option></select>	</td></tr>
+	<tr><td>Email </td><td> <input type='email' name='email'  > </td></tr>
+	<tr><td>Mot de passe  </td><td> <input type='password' name='pass'>	</td></tr>
 	<tr><td> <input type='submit' class='btn btn-success' value='VALIDER !!!!'> </td></tr>	
 	</table>
 	</form>

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,19 +15,9 @@ import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-/**
- * Servlet implementation class NouvellePizzaController
- */
+@WebServlet("/pizzas/new")
 public class NouvellePizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public NouvellePizzaController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -56,12 +47,12 @@ public class NouvellePizzaController extends HttpServlet {
 		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie));
 
 		try {
-			PizzaTool.dao.saveNew(piz);
+			PizzaTool.DAO.saveNew(piz);
 		} catch (SaveDaoException e) {
 			throw new PizzaServletRuntimeException(e);
 		}
 
-		response.sendRedirect("/pizzeria-admin-app/pizzas/list");
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}
 
 }

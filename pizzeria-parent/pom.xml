@@ -24,6 +24,14 @@
     </plugins>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <configuration>
+          	<failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+        
+
 
         <plugin>
           <artifactId>maven-dependency-plugin</artifactId>
@@ -44,6 +52,15 @@
   <dependencyManagement>
    <dependencies>
    
+   
+   <dependency>
+    <groupId>jstl</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+   
+   
+   
    <dependency>
     <groupId>org.hibernate.javax.persistence</groupId>
     <artifactId>hibernate-jpa-2.1-api</artifactId>
@@ -52,8 +69,8 @@
 
    <dependency>
     <groupId>javax.servlet</groupId>
-    <artifactId>servlet-api</artifactId>
-    <version>3.0-alpha-1</version>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
    </dependency>
    
    <dependency>
