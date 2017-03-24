@@ -42,9 +42,8 @@
       <scope>test</scope>
     </dependency>
         <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <scope>provided</scope>
+   <groupId>javax</groupId>
+   <artifactId>javaee-api</artifactId>
         </dependency>
   </dependencies>
   <build>

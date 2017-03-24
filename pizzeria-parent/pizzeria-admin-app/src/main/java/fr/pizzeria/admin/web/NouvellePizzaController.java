@@ -2,6 +2,7 @@ package fr.pizzeria.admin.web;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.tool.PizzaTool;
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.exception.SaveDaoException;
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -19,7 +18,8 @@ import fr.pizzeria.model.Pizza;
 public class NouvellePizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private IDao<Pizza, String> dao = PizzaTool.DAO;
+	@EJB
+	private PizzaServiceEJB pizzaEJB;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -48,14 +48,8 @@ public class NouvellePizzaController extends HttpServlet {
 
 		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie));
 
-		try {
-			dao.saveNew(piz);
-			response.sendRedirect(request.getContextPath() + "/pizzas/list");
-		} catch (SaveDaoException e) {
-			response.setStatus(400);
-			request.setAttribute("pizza", piz);
-			response.sendRedirect(request.getContextPath() + "/pizzas/new");
-		}
+		pizzaEJB.saveNew(piz);
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 
 	}
 

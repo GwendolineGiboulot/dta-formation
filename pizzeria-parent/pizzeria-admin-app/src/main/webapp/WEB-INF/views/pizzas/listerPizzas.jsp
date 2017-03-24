@@ -51,7 +51,7 @@
 <td>${pizza.categorie.libelle}</td>
 
 
-<td><a href=<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>><button class='btn'>Editer</button></a></td>
+<td><a href=<c:url value='/pizzas/edit?code=${pizza.code}'></c:url>><button class='btn btn-warning'>Editer</button></a></td>
 <td>	
 <form action="<c:url value='/pizzas/list'/>" method="post">
 	<input type='hidden' name='code' value='${pizza.code}'>

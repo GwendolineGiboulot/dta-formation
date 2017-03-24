@@ -21,9 +21,9 @@
 
 
 
-
-<div class='jumbotron'>
 <div class='container'>
+<div class='jumbotron'>
+
 
 <h2> LE MEILLEUR MENU D'EDITION DE PIZZA AU MONDE</h2>
 
@@ -32,14 +32,22 @@
  
  <input type='hidden' name='oldCode' value='${pizza.code}'>
  
-	<table class='table'>
-			
-	<tr><td>Code </td><td> <input type='text' name='code' value='${pizza.code}'> </td></tr>
-	<tr><td>Nom  </td><td> <input type='text' name='nom' value='${pizza.nom}'> 	</td></tr>
-	<tr><td>Prix  </td><td> <input type='number' name='prix' value='${pizza.prix}'>	</td></tr>	
-	<tr><td>Categorie </td><td> <select class='selectpicker' name='categorie'> <option>Viande</option><option>Poisson</option><option>Sans Viande</option></select>	</td></tr>
-	<tr><td> <input type='submit' class='btn btn-success' value='VALIDER !!!!'> </td></tr>	
-	</table>
+	<div class="form-group">	
+	<label for="InputCode">Code </label>   <input class="form-control" type='text' name='code' value='${pizza.code}'> 
+	</div>
+		<div class="form-group"> 
+	<label for="InputNom">Nom </label>  <input class="form-control" type='text' name='nom' value='${pizza.nom}'> 
+	</div>
+		<div class="form-group">
+	<label for="InputPrix">Prix </label>  <input class="form-control"  type='number' name='prix' value='${pizza.prix}'>	
+	</div>
+		<div class="form-group">
+	<label for="InputCategorie">Categorie </label>  <select class='selectpicker form-control' name='categorie'> <option>Viande</option><option>Poisson</option><option>Sans Viande</option></select>
+	 </div>	
+	<input type='submit' class='btn btn-success' value='VALIDER !!!!'> 
+
+	
+
 	</form>
 
 

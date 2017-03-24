@@ -3,6 +3,7 @@ package fr.pizzeria.admin.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,22 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.tool.PizzaTool;
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.exception.DeleteDaoException;
-import fr.pizzeria.exception.PizzaServletRuntimeException;
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.Pizza;
 
 @WebServlet("/pizzas/list")
 public class ListerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 36L;
 
-	private IDao<Pizza, String> dao = PizzaTool.DAO;
+	@EJB
+	private PizzaServiceEJB pizzaEJB;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Pizza> lPiz = dao.findAll();
+		List<Pizza> lPiz = pizzaEJB.findAll();
 
 		request.setAttribute("lPizza", lPiz);
 
@@ -40,11 +39,7 @@ public class ListerPizzaController extends HttpServlet {
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
 
-		try {
-			dao.delete(code);
-		} catch (DeleteDaoException e) {
-			throw new PizzaServletRuntimeException(e);
-		}
+		pizzaEJB.delete(code);
 
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}

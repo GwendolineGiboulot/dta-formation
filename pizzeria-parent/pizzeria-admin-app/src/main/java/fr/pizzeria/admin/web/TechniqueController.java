@@ -3,6 +3,7 @@ package fr.pizzeria.admin.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.admin.metier.PizzaStatistiquesService;
+
 @WebServlet("/technique")
-public class Technique extends HttpServlet {
+public class TechniqueController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private PizzaStatistiquesService stats;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -30,6 +36,8 @@ public class Technique extends HttpServlet {
 
 		request.setAttribute("tempsReq", tempsReq);
 		request.setAttribute("cheminReq", cheminReq);
+
+		request.setAttribute("ListePizzaEvent", stats.getListEvent());
 
 		RequestDispatcher dispatcher = this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/pizzas/technique.jsp");

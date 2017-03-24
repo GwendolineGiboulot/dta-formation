@@ -19,9 +19,9 @@
 
 	
 
-
-<div class='jumbotron'>
 <div class='container'>
+<div class='jumbotron'>
+
 
 <h2> LE MEILLEUR MENU DE LOGIN DE L'UNIVERS</h2>
 
@@ -46,13 +46,17 @@
  
  
  
-	<table class='table'>
-			
-	<tr><td>Email </td><td> <input type='email' name='email'  > </td></tr>
-	<tr><td>Mot de passe  </td><td> <input type='password' name='pass'>	</td></tr>
-	<tr><td> <input type='submit' class='btn btn-success' value='VALIDER !!!!'> </td></tr>	
-	</table>
-	</form>
+
+<div class="form-group">	
+<label for="exampleInputEmail1">Email </label> <input  class="form-control" type='email' name='email'  >
+    <small id="emailHelp" class="form-text text-muted">Nous ne partagerons JAMAIS votre email avec qui que ce soit.</small>
+  </div> 
+   <div class="form-group">
+<label for="exampleInputPassword1">Password</label>  <input class="form-control" type='password' name='pass'>	
+ </div>
+ 
+ <input type='submit' class='btn btn-success' value='VALIDER !!!!'> 
+</form>
 
 
 </div>

@@ -16,6 +16,8 @@
 </head>
 <body>
 
+
+<div class ='container'>
 <div class='jumbotron'>
 
 
@@ -24,7 +26,7 @@
 IL Y A ${nbSession} SESSION(S) OUVERTE(S) !!!!!
 
 
-<table>
+<table class= 'table'>
 <c:forEach var="temps" items="${tempsReq}" varStatus="status">
 
 <tr>
@@ -35,6 +37,18 @@ IL Y A ${nbSession} SESSION(S) OUVERTE(S) !!!!!
 </table>
 
 
+
+<table class= 'table'>
+<c:forEach var="event" items="${ListePizzaEvent}">
+
+<tr>
+<td> <c:out value="${event.code}"/> : <c:out value="${event.type}"/>  : <c:out value="${event.heureCreation}"/></td>
+</tr>
+</c:forEach>
+
+</table>
+
+</div>
 </div>
 
 
