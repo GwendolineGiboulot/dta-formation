@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.servlet;
 
 import java.io.IOException;
 

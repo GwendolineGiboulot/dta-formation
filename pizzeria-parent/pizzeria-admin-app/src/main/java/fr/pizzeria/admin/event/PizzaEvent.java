@@ -5,13 +5,20 @@ import java.time.LocalDateTime;
 public class PizzaEvent {
 	private String code;
 	private LocalDateTime heureCreation;
-	private String type;
+	private TypeEvent type;
 
-	public String getType() {
+	public PizzaEvent(String code, LocalDateTime heureCreation, TypeEvent type) {
+		super();
+		this.code = code;
+		this.heureCreation = heureCreation;
+		this.type = type;
+	}
+
+	public TypeEvent getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TypeEvent type) {
 		this.type = type;
 	}
 

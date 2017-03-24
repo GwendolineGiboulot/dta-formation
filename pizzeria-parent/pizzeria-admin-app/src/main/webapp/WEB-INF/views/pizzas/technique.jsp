@@ -27,10 +27,10 @@ IL Y A ${nbSession} SESSION(S) OUVERTE(S) !!!!!
 
 
 <table class= 'table'>
-<c:forEach var="temps" items="${tempsReq}" varStatus="status">
+<c:forEach var="req" items="${applicationScope.logReq}" varStatus="status">
 
 <tr>
-<td> La requête vers <c:out value="${cheminReq[status.index]}"/> a été éxécuté en  <c:out value="${temps}"/> millisecondes</td>
+<td> La requête vers <c:out value="${req.chemin}"/> a été éxécuté en  <c:out value="${req.temps}"/> millisecondes</td>
 </tr>
 </c:forEach>
 

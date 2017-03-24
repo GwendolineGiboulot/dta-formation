@@ -1,7 +1,6 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -26,16 +25,6 @@ public class TechniqueController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		Integer nbSession = (Integer) request.getSession().getServletContext().getAttribute("nbSession");
-
-		List<Long> tempsReq = (List<Long>) request.getSession().getServletContext().getAttribute("tempsReq");
-		List<String> cheminReq = (List<String>) request.getSession().getServletContext().getAttribute("cheminReq");
-
-		request.setAttribute("nbSession", nbSession);
-
-		request.setAttribute("tempsReq", tempsReq);
-		request.setAttribute("cheminReq", cheminReq);
 
 		request.setAttribute("ListePizzaEvent", stats.getListEvent());
 

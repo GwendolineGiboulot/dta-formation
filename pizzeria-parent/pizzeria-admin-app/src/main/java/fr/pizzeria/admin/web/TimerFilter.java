@@ -13,6 +13,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import fr.pizzeria.admin.tool.RequeteLog;
+
 @WebFilter(urlPatterns = "/*")
 public class TimerFilter implements Filter {
 
@@ -27,24 +29,18 @@ public class TimerFilter implements Filter {
 		long before = System.currentTimeMillis();
 		chain.doFilter(req, resp);
 		long after = System.currentTimeMillis();
-		String path = ((HttpServletRequest) req).getRequestURI();
 
 		HttpServletRequest request = (HttpServletRequest) req;
 
-		List<String> cheminReq = (List<String>) request.getSession().getServletContext().getAttribute("cheminReq");
-		List<Long> tempsReq = (List<Long>) request.getSession().getServletContext().getAttribute("tempsReq");
+		List<RequeteLog> logReq = (List<RequeteLog>) request.getSession().getServletContext().getAttribute("logReq");
 
-		if (cheminReq == null) {
-			cheminReq = new ArrayList<String>();
+		if (logReq == null) {
+			logReq = new ArrayList<RequeteLog>();
 		}
-		if (tempsReq == null) {
-			tempsReq = new ArrayList<Long>();
-		}
-		tempsReq.add((after - before));
-		cheminReq.add(request.getRequestURI());
 
-		request.getSession().getServletContext().setAttribute("cheminReq", cheminReq);
-		request.getSession().getServletContext().setAttribute("tempsReq", tempsReq);
+		logReq.add(new RequeteLog(request.getRequestURI(), (after - before)));
+
+		request.getSession().getServletContext().setAttribute("logReq", logReq);
 
 	}
 

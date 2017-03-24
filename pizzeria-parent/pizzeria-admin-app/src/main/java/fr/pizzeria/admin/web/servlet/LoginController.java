@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.web;
+package fr.pizzeria.admin.web.servlet;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
 
 		if ("admin@pizzeria.fr".equals(mail) && "admin".equals(pass)) {
 			request.getSession().setAttribute("isConnected", true);
-			response.sendRedirect("/pizzeria-admin-app/pizzas/list");
+			response.sendRedirect(request.getContextPath() + "/pizzas/list");
 		} else {
 
 			request.setAttribute("erreur", "Tu as entré un login pourri");
