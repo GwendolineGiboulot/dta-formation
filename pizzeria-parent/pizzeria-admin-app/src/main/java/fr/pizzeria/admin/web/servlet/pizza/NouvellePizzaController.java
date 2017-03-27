@@ -1,7 +1,6 @@
-package fr.pizzeria.admin.web.servlet;
+package fr.pizzeria.admin.web.servlet.pizza;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -15,8 +14,8 @@ import fr.pizzeria.admin.metier.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-@WebServlet("/pizzas/edit")
-public class EditerPizzaController extends HttpServlet {
+@WebServlet("/pizzas/new")
+public class NouvellePizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -29,22 +28,9 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<Pizza> lPiz = pizzaEJB.findAll();
-
-		String code = request.getParameter("code");
-
-		for (Pizza pizza : lPiz) {
-
-			if (pizza.getCode().equals(code)) {
-
-				request.setAttribute("pizza", pizza);
-
-				RequestDispatcher dispatcher = this.getServletContext()
-						.getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp");
-				dispatcher.forward(request, response);
-
-			}
-		}
+		RequestDispatcher dispatcher = this.getServletContext()
+				.getRequestDispatcher("/WEB-INF/views/pizzas/nouvellePizza.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
@@ -60,11 +46,9 @@ public class EditerPizzaController extends HttpServlet {
 		String prix = request.getParameter("prix");
 		String categorie = request.getParameter("categorie");
 
-		String oldCode = request.getParameter("oldCode");
-
 		Pizza piz = new Pizza(code, nom, Double.parseDouble(prix), CategoriePizza.getEnum(categorie));
 
-		pizzaEJB.update(oldCode, piz);
+		pizzaEJB.saveNew(piz);
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 
 	}

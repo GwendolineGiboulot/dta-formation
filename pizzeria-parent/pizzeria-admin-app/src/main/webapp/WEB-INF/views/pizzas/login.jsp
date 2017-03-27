@@ -23,12 +23,13 @@
 <div class='jumbotron'>
 
 
-<h2> LE MEILLEUR MENU DE LOGIN DE L'UNIVERS</h2>
+<h2 class="display-2"> LE MEILLEUR MENU DE LOGIN DE L'UNIVERS</h2>
 
 <c:if test="${erreur != null}">
 
-
-<h1>${erreur}</h1>
+<div class="alert alert-danger">
+${erreur}
+</div>
 </c:if>
 
 
@@ -36,7 +37,9 @@
 <c:if test="${param.erreur != null}">
 
 <c:if test='${param.erreur == "paslogue"}'>
-<h1>Tu n'es pas logué, vil gredin</h1>
+<div class="alert alert-danger">
+Tu n'es pas logué, vil gredin
+</div>
 </c:if>
 
 </c:if>
