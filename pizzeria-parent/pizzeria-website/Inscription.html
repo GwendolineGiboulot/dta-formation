@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Ici c'est le titre</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src ="app.js"></script>
+</head>
+<body>
+
+
+	
+
+<div class='container'>
+<div class='jumbotron'>
+
+
+<h2 class="display-2"> inscription</h2>
+
+
+
+
+
+ <form action="<c:url value='/login'></c:url>" method="post">
+ 
+
+<div class="form-group">	
+<label for="exampleInputEmail1">Email </label> <input  class="form-control" type='email' name='email'  >
+    <small id="emailHelp" class="form-text text-muted">Nous ne partagerons JAMAIS votre email avec qui que ce soit.</small>
+  </div> 
+   <div class="form-group">
+<label for="exampleInputPassword1">Password</label>  <input class="form-control" type='password' name='motDePasse'>	
+ </div>
+    <div class="form-group">
+<label for="inputNom">nom</label>  <input class="form-control" type='text' name='nom'> 
+ </div>
+    <div class="form-group">
+<label for="InputPrenom">prenom</label>  <input class="form-control" type='text' name='prenom'> 
+ </div>
+ 
+ <input type='submit' class='btn btn-success' onclick="Inscription()" value='VALIDER !!!!'> 
+</form>
+
+
+</div>
+</div>
+	
+
+
+
+
+</body>
+</html>

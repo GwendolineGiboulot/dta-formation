@@ -2,9 +2,7 @@ package fr.pizzeria.ihm;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import fr.pizzeria.exception.IhmRuntimeException;
-import fr.pizzeria.tools.IhmTools;
+import java.util.Scanner;
 
 /**
  * @author Quelqun
@@ -14,8 +12,26 @@ public abstract class Menu {
 
 	protected Map<Integer, Action> menuAction = new HashMap<>();
 
+	private Scanner scan;
+
 	public Menu() {
 
+	}
+
+	public Scanner getScan() {
+		return scan;
+	}
+
+	public void setScan(Scanner scan) {
+		this.scan = scan;
+	}
+
+	public Map<Integer, Action> getMenuAction() {
+		return menuAction;
+	}
+
+	public void setMenuAction(Map<Integer, Action> menuAction) {
+		this.menuAction = menuAction;
 	}
 
 	/**
@@ -23,40 +39,29 @@ public abstract class Menu {
 	 */
 	public void demarrer() {
 
-		try {
+		int choix = 0;
 
-			int choix = 0;
+		while (choix != 98) {
 
-			IhmTools ihmTools;
+			menuAction.forEach((k, v) -> {
 
-			ihmTools = new IhmTools();
+				System.out.println(k + " : " + v.getLibelle());
 
-			while (choix != 98) {
+			});
 
-				menuAction.forEach((k, v) -> {
+			System.out.println("99 : Sortir");
 
-					System.out.println(k + " : " + v.getLibelle());
+			choix = Integer.valueOf(scan.next());
+			// scan.nextLine();
 
-				});
-
-				System.out.println("99 : Sortir");
-
-				choix = ihmTools.getReader().nextInt();
-				ihmTools.getReader().nextLine();
-
-				if (choix == 99) {
-					break;
-				} else {
-					if (choix > 0 && choix < menuAction.size() + 1)
-						menuAction.get(choix).faireAction(ihmTools);
-
-				}
+			if (choix == 99) {
+				break;
+			} else {
+				if (choix > 0 && choix < menuAction.size() + 1)
+					menuAction.get(choix).faireAction();
 
 			}
 
-			ihmTools.getReader().close();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			throw new IhmRuntimeException(e);
 		}
 	}
 

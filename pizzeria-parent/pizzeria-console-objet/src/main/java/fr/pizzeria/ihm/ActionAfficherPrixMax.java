@@ -3,8 +3,8 @@ package fr.pizzeria.ihm;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.tools.IhmTools;
 
 /**
  * @author Quelqun
@@ -13,10 +13,16 @@ import fr.pizzeria.tools.IhmTools;
 @OptionMenu
 public class ActionAfficherPrixMax extends Action {
 
-	@Override
-	void faireAction(IhmTools ihmTools) {
+	IDao<Pizza, String> dao;
 
-		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAll();
+	public ActionAfficherPrixMax(IDao<Pizza, String> dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	void faireAction() {
+
+		List<Pizza> tableauPizza = dao.findAll();
 
 		double prixMax = tableauPizza.stream().max((p1, p2) -> Double.compare(p1.getPrix(), p2.getPrix())).get()
 				.getPrix();

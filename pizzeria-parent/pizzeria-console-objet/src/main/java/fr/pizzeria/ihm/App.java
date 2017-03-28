@@ -3,6 +3,8 @@ package fr.pizzeria.ihm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * @author Quelqun
  *
@@ -23,9 +25,14 @@ public class App {
 	 */
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
-		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+		Logger.getLogger("org").setLevel(Level.SEVERE);
 
-		new MenuReflection().demarrer();
+		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml")) {
+
+			MenuBase menu = context.getBean(MenuBase.class);
+			menu.demarrer();
+
+		}
 
 	}
 }

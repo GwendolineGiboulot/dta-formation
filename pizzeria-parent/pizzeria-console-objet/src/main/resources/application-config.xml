@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+
+<import resource="dao-memoire-config.xml"></import>
+
+
+<bean id="menuPrincipal" class="fr.pizzeria.ihm.MenuBase">
+
+<property name="menuAction"> 
+<util:map>
+	<entry key="1" value-ref="ActionLister"> </entry>
+	<entry key="2" value-ref="ActionAjouter"> </entry>
+	<entry key="3" value-ref="ActionMettreAJour"> </entry>
+	<entry key="4" value-ref="ActionSupprimer"> </entry>
+	<entry key="5" value-ref="ActionListerCategorie"> </entry>
+	<entry key="6" value-ref="ActionAfficherPrixMax"> </entry>
+</util:map>
+</property>
+<property name="scan" ref="scanner"></property>
+</bean>
+
+
+
+<bean id="scanner" class="java.util.Scanner">
+<constructor-arg>
+	<util:constant static-field= "java.lang.System.in" />
+</constructor-arg>
+</bean>
+
+
+
+
+<bean id="ActionLister" class="fr.pizzeria.ihm.ActionLister">
+<constructor-arg ref="dao"></constructor-arg>
+</bean>
+<bean id="ActionAjouter" class="fr.pizzeria.ihm.ActionAjouter">
+<constructor-arg ref="dao"></constructor-arg>
+<constructor-arg ref="scanner"></constructor-arg>
+</bean>
+<bean id="ActionMettreAJour" class="fr.pizzeria.ihm.ActionMettreAJour">
+<constructor-arg ref="dao"></constructor-arg>
+<constructor-arg ref="scanner"></constructor-arg>
+</bean>
+<bean id="ActionSupprimer" class="fr.pizzeria.ihm.ActionSupprimer">
+<constructor-arg ref="dao"></constructor-arg>
+<constructor-arg ref="scanner"></constructor-arg>
+</bean>
+<bean id="ActionListerCategorie" class="fr.pizzeria.ihm.ActionListerCategorie">
+<constructor-arg ref="dao"></constructor-arg>
+</bean>
+<bean id="ActionAfficherPrixMax" class="fr.pizzeria.ihm.ActionAfficherPrixMax">
+<constructor-arg ref="dao"></constructor-arg>
+</bean>
+
+
+
+
+
+
+
+
+
+</beans>

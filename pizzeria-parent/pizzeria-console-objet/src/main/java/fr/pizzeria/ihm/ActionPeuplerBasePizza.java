@@ -1,14 +1,21 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.tools.IhmTools;
+import fr.pizzeria.dao.IDao;
+import fr.pizzeria.model.Pizza;
 
 @OptionMenu
 public class ActionPeuplerBasePizza extends Action {
 
-	@Override
-	void faireAction(IhmTools ihmTools) {
+	IDao<Pizza, String> dao;
 
-		ihmTools.getPizzaDao().peuplerBasePizza();
+	public ActionPeuplerBasePizza(IDao<Pizza, String> dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	void faireAction() {
+
+		dao.peuplerBasePizza();
 
 	}
 

@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
-import fr.pizzeria.tools.IhmTools;
 
 /**
  * @author Quelqun
@@ -15,10 +15,16 @@ import fr.pizzeria.tools.IhmTools;
 @OptionMenu
 public class ActionListerCategorie extends Action {
 
-	@Override
-	void faireAction(IhmTools ihmTools) {
+	IDao<Pizza, String> dao;
 
-		List<Pizza> tableauPizza = ihmTools.getPizzaDao().findAll();
+	public ActionListerCategorie(IDao<Pizza, String> dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	void faireAction() {
+
+		List<Pizza> tableauPizza = dao.findAll();
 
 		Map<CategoriePizza, List<Pizza>> map = tableauPizza.stream()
 				.collect(Collectors.groupingBy(Pizza::getCategorie));

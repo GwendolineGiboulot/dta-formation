@@ -38,9 +38,27 @@ $(document).ready(function() {
 		}
 */
 
-
 		$('.pizza').html(lines);
 
 
 	});
 });
+
+
+
+
+function Inscription() {
+
+    $.ajax({
+        type: 'POST',
+        contentType: 'application/json',
+        url: "http://localhost:8080/pizzeria-admin-app/api/pizzas",
+        dataType: "json",
+        success: function(data, textStatus, jqXHR){
+            alert('toto');
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('ca a foire sec');
+        }
+    });
+}
