@@ -30,6 +30,7 @@ public class App {
 		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml")) {
 
 			MenuBase menu = context.getBean(MenuBase.class);
+
 			menu.demarrer();
 
 		}
