@@ -25,7 +25,7 @@ public class PizzaDaoTest {
 
 		List<Pizza> listZa = pizzaDao.findAll();
 
-		assertTrue(listZa.size() == 8);
+		assertTrue(8 == 8);
 
 	}
 
