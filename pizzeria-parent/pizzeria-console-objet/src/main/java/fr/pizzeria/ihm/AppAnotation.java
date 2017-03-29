@@ -3,19 +3,9 @@ package fr.pizzeria.ihm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import fr.pizzeria.console.PizzeriaAppSpringConfig;
-
-/**
- * @author Quelqun
- *
- */
-public class App {
-
-	private App() {
-
-	}
+public class AppAnotation {
 
 	/**
 	 * @param args
@@ -29,8 +19,7 @@ public class App {
 
 		Logger.getLogger("org").setLevel(Level.SEVERE);
 
-		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-				PizzeriaAppSpringConfig.class)) {
+		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml")) {
 
 			MenuBase menu = context.getBean(MenuBase.class);
 

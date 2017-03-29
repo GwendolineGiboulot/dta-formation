@@ -1,18 +1,21 @@
 package fr.pizzeria.ihm;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Quelqun
  *
  */
+
 public abstract class Menu {
 
-	protected Map<Integer, Action> menuAction = new HashMap<>();
-
+	@Autowired
 	private Scanner scan;
+
+	protected Map<Integer, Action> menuAction;
 
 	public Menu() {
 
@@ -52,7 +55,7 @@ public abstract class Menu {
 			System.out.println("99 : Sortir");
 
 			choix = Integer.valueOf(scan.next());
-			// scan.nextLine();
+			scan.nextLine();
 
 			if (choix == 99) {
 				break;

@@ -4,6 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+<bean id= "pizzaDao" class= "fr.pizzeria.dao.CrudJpa" >
+
+	<constructor-arg value= "Pizza.class" />
+	<constructor-arg value= "emf" />
+</bean>
+
 
 
 </beans>

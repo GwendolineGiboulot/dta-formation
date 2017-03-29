@@ -2,6 +2,9 @@ package fr.pizzeria.ihm;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.IhmRuntimeException;
@@ -12,11 +15,13 @@ import fr.pizzeria.model.Pizza;
  *
  */
 @OptionMenu
+@Controller
 public class ActionSupprimer extends Action {
 
 	IDao<Pizza, String> dao;
 	Scanner scan;
 
+	@Autowired
 	public ActionSupprimer(IDao<Pizza, String> dao, Scanner scan) {
 		this.dao = dao;
 		this.scan = scan;

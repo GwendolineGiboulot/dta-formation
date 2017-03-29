@@ -2,6 +2,9 @@ package fr.pizzeria.ihm;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.Pizza;
 
@@ -10,10 +13,12 @@ import fr.pizzeria.model.Pizza;
  *
  */
 @OptionMenu
+@Controller
 public class ActionLister extends Action {
 
 	IDao<Pizza, String> dao;
 
+	@Autowired
 	public ActionLister(IDao<Pizza, String> dao) {
 		this.dao = dao;
 	}

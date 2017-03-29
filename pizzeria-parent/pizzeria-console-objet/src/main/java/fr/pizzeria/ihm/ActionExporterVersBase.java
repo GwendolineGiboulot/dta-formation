@@ -2,6 +2,9 @@ package fr.pizzeria.ihm;
 
 import java.util.ResourceBundle;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.IhmRuntimeException;
 import fr.pizzeria.model.Pizza;
@@ -11,10 +14,12 @@ import fr.pizzeria.model.Pizza;
  *
  */
 @OptionMenu
+@Controller
 public class ActionExporterVersBase extends Action {
 
 	IDao<Pizza, String> dao;
 
+	@Autowired
 	public ActionExporterVersBase(IDao<Pizza, String> dao) {
 		this.dao = dao;
 	}

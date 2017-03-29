@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -13,10 +16,12 @@ import fr.pizzeria.model.Pizza;
  *
  */
 @OptionMenu
+@Controller
 public class ActionListerCategorie extends Action {
 
 	IDao<Pizza, String> dao;
 
+	@Autowired
 	public ActionListerCategorie(IDao<Pizza, String> dao) {
 		this.dao = dao;
 	}
