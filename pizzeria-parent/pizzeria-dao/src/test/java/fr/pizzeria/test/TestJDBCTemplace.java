@@ -15,7 +15,9 @@ import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.SaveDaoException;
 import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Performance;
 import fr.pizzeria.model.Pizza;
+import fr.pizzeria.repo.PerformanceRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DaoConfigSpringData.class)
@@ -24,24 +26,34 @@ public class TestJDBCTemplace {
 	@Autowired
 	private IDao<Pizza, String> pizzaDao;
 
+	@Autowired
+	private PerformanceRepo perfoDao;
+
 	@Test
 	public void testInsertionSuppression() throws SaveDaoException, DeleteDaoException {
+
+		pizzaDao.saveNew(new Pizza("", "toto", 45, CategoriePizza.SANS_VIANDE));
 
 		List<Pizza> listZa = pizzaDao.findAll();
 
 		int nombrePizza = listZa.size();
 
-		pizzaDao.saveNew(new Pizza("HNQ", "toto", 45, CategoriePizza.SANS_VIANDE));
+		pizzaDao.delete("TOT");
 
 		listZa = pizzaDao.findAll();
 
-		assertTrue(nombrePizza + 1 == listZa.size());
+		assertTrue(nombrePizza == listZa.size() + 1);
 
-		pizzaDao.delete("HNQ");
+	}
 
-		listZa = pizzaDao.findAll();
+	@Test
+	public void testPerfo() throws SaveDaoException, DeleteDaoException {
 
-		assertTrue(nombrePizza == listZa.size());
+		pizzaDao.saveNew(new Pizza("KKJ", "tonotn", 45, CategoriePizza.SANS_VIANDE));
+
+		List<Performance> toto = perfoDao.findAll();
+
+		toto.size();
 
 	}
 

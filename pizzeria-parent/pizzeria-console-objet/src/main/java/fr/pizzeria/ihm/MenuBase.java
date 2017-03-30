@@ -39,6 +39,7 @@ public class MenuBase extends Menu {
 		menuAction.put(4, context.getBean(ActionListerCategorie.class));
 		menuAction.put(5, context.getBean(ActionMettreAJour.class));
 		menuAction.put(6, context.getBean(ActionSupprimer.class));
+		menuAction.put(7, context.getBean(ActionAfficherPerfo.class));
 
 	}
 }

@@ -5,16 +5,21 @@ import java.util.Scanner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoImpljdbcTemplate;
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.aspect.MesurerPerformance;
+import fr.pizzeria.dao.PizzaDaoImplSpringData;
 
+@Import({ PizzaDaoImplSpringData.class, MesurerPerformance.class })
+@EnableAspectJAutoProxy
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
+@EnableJpaRepositories("fr.pizzeria.repo")
 public class PizzeriaAppSpringConfig {
 
 	@Bean
@@ -23,14 +28,16 @@ public class PizzeriaAppSpringConfig {
 	}
 
 	@Bean
-	public IDao<Pizza, String> pizzaDao() {
+	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		return txManager;
+	}
 
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("classpath:conf/schema.sql")
-				.addScripts("classpath:conf/test-data.sql").build();
-
-		return new PizzaDaoImpljdbcTemplate(db);
-
+	@Bean
+	public LocalEntityManagerFactoryBean entityManagerFactory() {
+		LocalEntityManagerFactoryBean emf = new LocalEntityManagerFactoryBean();
+		emf.setPersistenceUnitName("pizzeria-pu");
+		return emf;
 	}
 
 }
