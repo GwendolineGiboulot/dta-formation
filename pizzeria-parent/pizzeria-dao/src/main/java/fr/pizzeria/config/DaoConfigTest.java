@@ -1,7 +1,6 @@
 package fr.pizzeria.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -12,7 +11,6 @@ import fr.pizzeria.dao.PizzaDaoImpljdbcTemplate;
 import fr.pizzeria.model.Pizza;
 
 @Configuration
-@ComponentScan("fr.pizzeria.ihm")
 public class DaoConfigTest {
 
 	@Bean

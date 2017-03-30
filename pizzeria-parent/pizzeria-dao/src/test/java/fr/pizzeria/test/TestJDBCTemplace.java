@@ -1,3 +1,5 @@
+package fr.pizzeria.test;
+
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -8,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.pizzeria.config.DaoConfigTest;
+import fr.pizzeria.config.DaoConfigSpringData;
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.DeleteDaoException;
 import fr.pizzeria.exception.SaveDaoException;
@@ -16,7 +18,7 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = DaoConfigTest.class)
+@ContextConfiguration(classes = DaoConfigSpringData.class)
 public class TestJDBCTemplace {
 
 	@Autowired

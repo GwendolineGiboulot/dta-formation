@@ -26,8 +26,8 @@ public class PizzeriaAppSpringConfig {
 	public IDao<Pizza, String> pizzaDao() {
 
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("conf//schema.sql")
-				.addScripts("conf//test-data.sql").build();
+		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("classpath:conf/schema.sql")
+				.addScripts("classpath:conf/test-data.sql").build();
 
 		return new PizzaDaoImpljdbcTemplate(db);
 
