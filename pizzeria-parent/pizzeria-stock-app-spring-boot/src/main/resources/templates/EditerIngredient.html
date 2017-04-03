@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>La liste des ingrédients</title>
+
+
+<script src="@{/webjars/jquery/3.2.0/jquery.js}"></script>
+<script src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.js}"></script>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}"></link>
+</head>
+<body>
+
+
+	<div class='container'>
+		<div class='jumbotron'>
+
+
+			<h2>LE MEILLEUR MENU D'EDITION D'INGREDIENT DE L'UNIVERS !!!!!</h2>
+
+
+			<form method="post" th:object="${ingre}">
+
+				<input type='hidden' name='oldCode' th:field='${ingre.id}'/>
+
+				<div class="form-group">
+					<label for="InputNom">Nom </label>
+					<input class="form-control" th:field="${ingre.nom}" />
+				</div>
+				<div class="form-group">
+					<label for="InputPrix">Prix </label>
+					<input class="form-control" th:field="${ingre.prix}" />
+				</div>
+				<div class="form-group">
+					<label for="InputQuantite">Quantite </label>
+					<input
+						class="form-control" th:field="${ingre.quantite}" />
+				</div>
+				<input type='submit' class='btn btn-success' value='VALIDER !!!!'></input>
+
+
+
+			</form>
+
+
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>

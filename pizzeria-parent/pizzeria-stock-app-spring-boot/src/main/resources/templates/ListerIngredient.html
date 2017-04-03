@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>La liste des ingrédients</title>
+
+
+<script src="@{/webjars/jquery/3.2.0/jquery.js}"></script>
+<script src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.js}"></script>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.css}"></link>
+</head>
+<body>
+
+<div class='container'>
+
+
+
+<form method="post" action="http://localhost:8080/logout">
+    <input class="btn btn-info" type="submit" value="Logoutage" />
+</form>
+
+<table class='table table-striped'>
+
+ <thead>
+    <tr>
+    
+      <th>Id de l'ingrédient</th>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Quantité</th>
+    </tr>
+	</thead>
+	<tbody>
+	
+
+
+<tr th:each="prod: ${lIngr}">
+<td th:text="${prod.id}"></td>
+<td th:text="${prod.nom}"></td>
+<td th:text="${prod.prix}"></td>
+<td th:text="${prod.quantite}"></td>
+<td><a th:href="@{/ingredients/__${prod.id}__}"><button class='btn btn-warning'>Editer</button></a></td>
+
+
+
+</tr>
+	
+</tbody>
+</table>
+
+
+
+</div>
+	
+	
+
+
+
+
+
+</body>
+</html>

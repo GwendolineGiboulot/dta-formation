@@ -25,6 +25,7 @@ public class App {
 	 *             Point d'entrée principal du programme
 	 * 
 	 */
+
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 
 		Logger.getLogger("org").setLevel(Level.SEVERE);
